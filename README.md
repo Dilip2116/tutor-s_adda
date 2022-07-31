@@ -1,5 +1,5 @@
-# e-tutor
-C-DAC group project
+# Tutor's Adda
+
 On this global platform, multiple teachers can launch their
 online courses on any subject, and students can select the
 courses based on their preferences and reviews of teachers. This
