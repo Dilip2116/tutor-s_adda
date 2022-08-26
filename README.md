@@ -14,6 +14,7 @@ On this global platform, multiple teachers can launch their online courses on an
 
 
 <hr>
+<hr>
 <h2 align="center"> 💻 Technology Used </h2>
 <p align="center">
  
