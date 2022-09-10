@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tutor's Adda</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/EPariksha.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Tuotr's Adda</span>
+      </a>
+      
+    </div><!-- End Logo -->
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+   
+        <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+          <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="img-sm circle-img  rounded-circle" src="assets/img/face23.jpg" alt="Profile image" > </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            <div class="dropdown-header text-center">
+              <img class="img-md rounded-circle" src="assets/img/face23.jpg" alt="Profile image">
+              <p class="mb-1 mt-3 font-weight-semibold">Karishma P.</p>
+              <p class="fw-light text-muted mb-0">karishmap@gmail.com</p>
+            </div>
+            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger"></span></a>
+            
+            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+
+  </header><!-- End Header -->
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside  id="sidebar" class="sidebar">
+
+    <ul  class="sidebar-nav" id="sidebar-nav">
+
+      <!--  Dashboard  -->
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="dashboard.html">
+          <i id="dash" class="bi bi-window-stack"></i>                
+                <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard  -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="schedule.html">
+          <i  class="bi bi-calendar2-week"></i>    
+                <span>Schedule</span>
+        </a>
+      </li><!-- End schedule   -->
+
+      <li class="nav-item">
+        <a  id="selected" class="nav-link collapsed" href="CourseLaunchForm.html">
+          <i  id="selected" class="bi bi-plus-circle"></i>  
+                  <span>New Course</span>
+        </a>
+      </li><!-- End New Course -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="courses.html">
+          <i class="bi bi-journal-check"></i>       
+             <span>Courses</span>
+        </a>
+      </li><!-- End Courses -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed"   href="teacher_profile.html">
+          <i  class="bi bi-person-workspace"></i> 
+                   <span>Profile</span>
+        </a>
+      </li><!-- End Profile -->
+         
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+<!-- ****************************************************************************************-->
+<title>Course Lanching Form</title>
+
+
+
+   <body style="padding-left: 200px">
+ 
+
+
+<section  class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div style="background:ghostwhite" class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">New Course Details</h3>
+              <form >
+  
+
+                <!--Course Name-->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="cName" class="form-control form-control-lg" required />
+                      <label class="form-label">Course Name</label>
+                    </div>
+  
+                  </div>
+
+                  <!--Course Category-->
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="cCategory" class="form-control form-control-lg" required/>
+                      <label class="form-label" >Course Category</label>
+                    </div>
+  
+                  </div>
+                </div>
+
+
+                <!--Course Duration-->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="number" id="cDuration" class="form-control form-control-lg" required />
+                        <label class="form-label">Course Duration</label>
+                      </div>
+    
+                    </div>
+
+
+                    <!--Course Strength-->
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="number" id="cStrength" class="form-control form-control-lg" required/>
+                        <label class="form-label" >Course Strength</label>
+                      </div>
+    
+                    </div>
+                  </div>
+  
+
+                   <!--Start Date-->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="date" id="cStartDate" class="form-control form-control-lg" required />
+                        <label class="form-label">Start Date</label>
+                      </div>
+    
+                    </div>
+
+
+                    <!--End Date-->
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="date" id="cEndDate" class="form-control form-control-lg" required/>
+                        <label class="form-label" >End Date</label>
+                      </div>
+    
+                    </div>
+                  </div>
+                
+
+                 
+
+                    <!--Start Time-->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="time" id="cStartTime" class="form-control form-control-lg" required />
+                        <label class="form-label">Start Time</label>
+                      </div>
+    
+                    </div>
+
+
+                    <!--End Time-->
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="time" id="cEndTime" class="form-control form-control-lg" required/>
+                        <label class="form-label" >End Time</label>
+                      </div>
+    
+                    </div>
+                  </div>
+                
+                  <!--About-->
+                  <div class="row">
+                    <div class="col-md-12 mb-4 pb-2">
+    
+                      <div class="form-group shadow-textarea">
+                        <label >About</label>
+                        <textarea class="form-control z-depth-1" id="cAbout" rows="3" placeholder="Write about course..." required></textarea>
+                      </div>
+    
+                    </div>
+  
+                    
+                  </div>
+  
+                <!--Buttton-->
+
+                <div class="mt-4 pt-2">
+                  
+                  <button type="button" class="btn btn-success btn-lg btn-block">Launch Course</button>
+
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

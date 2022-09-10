@@ -1,0 +1,248 @@
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<title>Student Registration</title>
+
+
+<!--BACKGROUND CSS
+<style>
+    .gradient-custom {
+/* fallback for old browsers */
+background: #f093fb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+
+
+</style>
+-->
+
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+              <form>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="sFname" class="form-control form-control-lg" />
+                      <label class="form-label">First Name</label>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="sLname" class="form-control form-control-lg" />
+                      <label class="form-label" >Last Name</label>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 d-flex align-items-center">
+  
+                    <div class="form-outline datepicker w-100">
+                      <input type="text" class="form-control form-control-lg" id="sDOB" />
+                      <label  class="form-label">Birthday</label>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <h6 class="mb-2 pb-1">Gender: </h6>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sFemale"
+                        value="option1"  />
+                      <label class="form-check-label">Female</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sMale"
+                        value="option2" />
+                      <label class="form-check-label" >Male</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sOther"
+                        value="option3" />
+                      <label class="form-check-label" for="otherGender">Other</label>
+                    </div>
+  
+                  </div>
+                </div>
+
+                <!--EMAIL-->
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <input type="email" id="sEmail" class="form-control form-control-lg" />
+                      <label class="form-label" >Email</label>
+                    </div>
+  
+                  </div>
+
+                  <!--Phone Number-->
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <input type="tel" id="sPhone" class="form-control form-control-lg" />
+                      <label class="form-label" >Phone Number</label>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                  <!--UserName-->
+
+                <div class="row">
+                    <div class="col-md-12 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="text" id="sUname" class="form-control form-control-lg" />
+                        <label class="form-label" >Username</label>
+                      </div>
+    
+                    </div>
+  
+                    
+                  </div>
+  
+
+
+
+                 <!--Password-->
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <input type="password" id="sPwd" class="form-control form-control-lg" />
+                      <label class="form-label" >Password</label>
+                    </div>
+  
+                  </div>
+
+                  <!--Re-Enter Password-->
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <input type="password" id="sPwd1" class="form-control form-control-lg" />
+                      <label class="form-label" >Re-Enter Password</label>
+                    </div>
+  
+                  </div>
+                </div>
+
+
+               
+
+                <!--Street-->
+                <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="text" id="sStreet" class="form-control form-control-lg" />
+                        <label class="form-label" >Street</label>
+                      </div>
+    
+                    </div>
+  
+                    <!--Pincode-->
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="text" id="sPincode" class="form-control form-control-lg" />
+                        <label class="form-label" >Pincode</label>
+                      </div>
+    
+                    </div>
+                  </div>
+  
+                
+                  <!--City-->
+                <div class="row">
+                    <div class="col-md-4 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="text" id="sCity" class="form-control form-control-lg" />
+                        <label class="form-label" >City</label>
+                      </div>
+    
+                    </div>
+  
+                    <!--State-->
+                    <div class="col-md-4 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="text" id="sState" class="form-control form-control-lg" />
+                        <label class="form-label" >State</label>
+                      </div>
+    
+                    </div>
+
+
+                    <!--Country-->
+                    <div class="col-md-4 mb-4 pb-2">
+    
+                        <div class="form-outline">
+                          <input type="text" id="sCountry" class="form-control form-control-lg" />
+                          <label class="form-label" >Country</label>
+                        </div>
+      
+                      </div>
+                  </div>
+  
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="sCheck" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                      Agree to terms and conditions
+                    </label>
+                  </div>
+
+
+               
+                <!--Buttton-->
+
+                <div class="mt-4 pt-2">
+                  
+                  <button type="button" class="btn btn-success btn-lg btn-block">Register</button>
+
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
