@@ -17,7 +17,7 @@ public class StudentDAO {
 	@Autowired
 	StudentRepository studentRepository;
 	
-	public void delete(int id) {
+	public void deletestudent(int id) {
 		studentRepository.deleteById(id);
 	}
 	
@@ -28,9 +28,7 @@ public class StudentDAO {
 		return tlist;
 	}
 	
-	public Optional<Student> get(int id) {
-		return Optional.ofNullable(studentRepository.findById(id).get());
-	}
+	
 
 	//to add new STUDENT
 		public Student addstudent(Student student ) {
