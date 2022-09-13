@@ -23,7 +23,7 @@ public class Review {
 	private int fifth_rating;
 	
 	
-	
+	//-------------------------------------------------------------------------------------
 	
 	
 	public Review() {
@@ -41,6 +41,12 @@ public class Review {
 		this.fourth_rating = fourth_rating;
 		this.fifth_rating = fifth_rating;
 	}
+	
+	
+	
+	
+	
+	//-------------------------------------------------------------------------------------
 	
 	
 	

@@ -31,7 +31,7 @@ public class ReviewController {
 	}
 	
 	
-    @GetMapping("/getreviews")
+    @GetMapping("/getreview")
 	public List<Review> getreview()
 	{
 		List<Review> LReview;
