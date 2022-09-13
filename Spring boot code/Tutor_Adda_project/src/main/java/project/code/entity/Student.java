@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToOne;
 
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -32,26 +32,15 @@ public class Student {
 	
 	private String Student_email;
 	
-	//----------------------------------------------------------------------------------------
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address;
 	
 	
 
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	
-	
-	
-	
-	
 	public Student(int studentId, String student_fname, String student_lname, String student_mobile,
-			String student_gender, String student_username, String student_password, String student_email) {
+			String student_gender, String student_username, String student_password, String student_email,
+			Address address) {
 		super();
-<<<<<<< HEAD
 		StudentId = studentId;
 		Student_fname = student_fname;
 		Student_lname = student_lname;
@@ -60,29 +49,6 @@ public class Student {
 		Student_username = student_username;
 		Student_password = student_password;
 		Student_email = student_email;
-	}
-
-
-
-
-
-
-
-	//----------------------------------------------------------------------------------------
-	
-	
-	
-	
-	
-=======
-		this.StudentId = studentId;
-		this.Student_fname = student_fname;
-		this.Student_lname = student_lname;
-		this.Student_mobile = student_mobile;
-		this.Student_gender = student_gender;
-		this.Student_username = student_username;
-		this.Student_password = student_password;
-		this.Student_email = student_email;
 		this.address=address;
 	}
 
@@ -93,13 +59,13 @@ public class Student {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
+	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
->>>>>>> 357ef0be3d146237f97b09516a34ab7533a24eeb
 	
+
 	public int getStudentId() {
 		return StudentId;
 	}
