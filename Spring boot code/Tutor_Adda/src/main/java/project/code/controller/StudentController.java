@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import project.code.dao.StudentDAO;
+import project.code.entity.Courses;
 import project.code.entity.Student;
 
 
@@ -38,6 +39,9 @@ public class StudentController {
 	@Autowired
 	StudentDAO dao;
 	
+	
+	//--------------------------------------------------------------------------------------
+	
 	@PostMapping("/addstudent")
 	public Student addstudent(@RequestBody Student student)
 	{
@@ -46,7 +50,9 @@ public class StudentController {
 	}
 	
 	
-    @GetMapping("/getstudents")
+	//--------------------------------------------------------------------------------------
+	
+    @GetMapping("/getstudent")
 	public List<Student> getstudent()
 	{
 		List<Student> LStudent;
@@ -56,12 +62,37 @@ public class StudentController {
 
 	}
     
+  //--------------------------------------------------------------------------------------
+    
     @DeleteMapping("/deletestudent/{id}")
 	public void deletestudent(@PathVariable int id)
 	{
 		dao.deletestudent(id);
 	}
 	
-	
+    
+  //--------------------------------------------------------------------------------------
+    
+    
+   @PostMapping("/updatestudent")
+   	public Student updatestudent(@RequestBody Student s)
+   	{
+    	Student student = new Student();
+    	student =dao.updatestudent(s);
+       	return student;
+   	}
+   
+   
+   
+ //--------------------------------------------------------------------------------------
+   
+   
+   @GetMapping("/getstudent/{id}")
+	public Student getstudent(@PathVariable int id) 
+	{
+		Student student = new Student();
+		student = dao.get(id);
+		return student; 
+	}
 	
 }

@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -32,42 +32,43 @@ public class Student {
 	
 	private String Student_email;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	//----------------------------------------------------------------------------------------
+	//constructor
 	
-	public Student(int studentId, String student_fname, String student_lname, String student_mobile,
-			String student_gender, String student_username, String student_password, String student_email,
-			Address address) {
-		super();
-		this.StudentId = studentId;
-		this.Student_fname = student_fname;
-		this.Student_lname = student_lname;
-		this.Student_mobile = student_mobile;
-		this.Student_gender = student_gender;
-		this.Student_username = student_username;
-		this.Student_password = student_password;
-		this.Student_email = student_email;
-		this.address=address;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
+	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
+	
+	
+	public Student(int studentId, String student_fname, String student_lname, String student_mobile,
+			String student_gender, String student_username, String student_password, String student_email) {
+		super();
+		StudentId = studentId;
+		Student_fname = student_fname;
+		Student_lname = student_lname;
+		Student_mobile = student_mobile;
+		Student_gender = student_gender;
+		Student_username = student_username;
+		Student_password = student_password;
+		Student_email = student_email;
+	}
+
+
+
+	//----------------------------------------------------------------------------------------
+
+	//getter setters
+	
+	
+	
 	public int getStudentId() {
 		return StudentId;
 	}
 
+	
 	public void setStudentId(int studentId) {
 		StudentId = studentId;
 	}
