@@ -1,13 +1,26 @@
 package project.code.entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name="student_info")
@@ -28,6 +41,26 @@ public class Student {
 	
 	private String Student_username;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date student_dob;
+	
+	public Date getStudent_dob() {
+		return student_dob;
+	}
+
+	public void setStudent_dob(Date student_dob) {
+		this.student_dob = student_dob;
+	}
+
+	public List<Review> getReview() {
+		return review;
+	}
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
 	private String Student_password;
 	
 	private String Student_email;
@@ -35,11 +68,31 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
-	
+	@ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+	private List<Courses> course;
 
+	public List<Courses> getCourse() {
+		return course;
+	}
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "student")
+	private List<Review> review;
+	
+	
+	public void setCourse(List<Courses> course) {
+		this.course = course;
+	}
+
+	
+	//all field
 	public Student(int studentId, String student_fname, String student_lname, String student_mobile,
-			String student_gender, String student_username, String student_password, String student_email,
-			Address address) {
+			String student_gender, String student_username, Date student_dob, String student_password,
+			String student_email, Address address, List<Courses> course, List<Review> review) {
 		super();
 		StudentId = studentId;
 		Student_fname = student_fname;
@@ -47,9 +100,12 @@ public class Student {
 		Student_mobile = student_mobile;
 		Student_gender = student_gender;
 		Student_username = student_username;
+		this.student_dob = student_dob;
 		Student_password = student_password;
 		Student_email = student_email;
-		this.address=address;
+		this.address = address;
+		this.course = course;
+		this.review = review;
 	}
 
 	public Address getAddress() {
