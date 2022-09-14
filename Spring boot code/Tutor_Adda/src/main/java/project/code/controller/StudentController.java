@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import project.code.dao.StudentDAO;
 import project.code.entity.Courses;
 import project.code.entity.Student;
+import project.code.services.FileService;
 
 
 @RestController
@@ -39,6 +41,9 @@ public class StudentController {
 	@Autowired
 	StudentDAO dao;
 	
+	
+	@Autowired
+	private FileService fileService;
 	
 	//--------------------------------------------------------------------------------------
 	
@@ -94,5 +99,13 @@ public class StudentController {
 		student = dao.get(id);
 		return student; 
 	}
-	
+   
+   
+ //--------------------------------------------------------------------------------------
+	//incomplete function...
+  /* 
+   public ResponseEntity<ImageResponse> uploadPostImage(){
+	   
+   }
+		   )*/
 }
