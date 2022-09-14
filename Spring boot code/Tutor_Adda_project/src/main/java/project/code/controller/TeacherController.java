@@ -30,10 +30,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import project.code.dao.TeacherDAO;
 import project.code.entity.Teacher;
+import project.code.repository.TeacherRepository;
 
 @RestController
 public class TeacherController {
 
+	
 
 	@Autowired
 	TeacherDAO dao;
@@ -61,6 +63,8 @@ public class TeacherController {
 	{
 		Teacher teacher = new Teacher();
 		teacher=this.dao.get(id);
+	
+	
 		return teacher;
 	}
 	

@@ -24,6 +24,15 @@ public class Review {
 	private int fourth_rating;
 	private int fifth_rating;
 	
+	@ManyToOne
+	@JoinColumn(name="course_id")
+	private Courses course;
+	
+	@ManyToOne
+	@JoinColumn(name="student_id")
+	private Student student;
+	
+	
 	public int getReviewId() {
 		return ReviewId;
 	}
@@ -57,13 +66,6 @@ public class Review {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	@ManyToOne
-	@JoinColumn(name="course_id")
-	private Courses course;
-	
-	@ManyToOne
-	@JoinColumn(name="student_id")
-	private Student student;
 	
 	
 	

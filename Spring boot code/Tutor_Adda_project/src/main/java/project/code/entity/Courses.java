@@ -100,7 +100,7 @@ public class Courses
 
 	private Time course_end_time;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 	

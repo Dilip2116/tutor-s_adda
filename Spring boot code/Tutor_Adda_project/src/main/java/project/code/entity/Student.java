@@ -23,7 +23,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="student_info")
 public class Student {
 	
 	
@@ -95,6 +94,24 @@ public class Student {
 			String student_email, Address address, List<Courses> course, List<Review> review) {
 		super();
 		StudentId = studentId;
+		Student_fname = student_fname;
+		Student_lname = student_lname;
+		Student_mobile = student_mobile;
+		Student_gender = student_gender;
+		Student_username = student_username;
+		this.student_dob = student_dob;
+		Student_password = student_password;
+		Student_email = student_email;
+		this.address = address;
+		this.course = course;
+		this.review = review;
+	}
+	//without id
+	public Student( String student_fname, String student_lname, String student_mobile,
+			String student_gender, String student_username, Date student_dob, String student_password,
+			String student_email, Address address, List<Courses> course, List<Review> review) {
+		super();
+		
 		Student_fname = student_fname;
 		Student_lname = student_lname;
 		Student_mobile = student_mobile;
