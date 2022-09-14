@@ -64,6 +64,16 @@ public class CoursesController {
     	return course;
 	}
 
+@GetMapping("/getcoursebyteacher/{id}")
+	
+	public List<Courses> getByTeacherId(@PathVariable int id)  //Get by teachers
+	{
+		List<Courses> Lcourse ;
+	
+		Lcourse=dao.getByTeacherId(id);
+		return Lcourse;
+	}
+    
 
 
 }

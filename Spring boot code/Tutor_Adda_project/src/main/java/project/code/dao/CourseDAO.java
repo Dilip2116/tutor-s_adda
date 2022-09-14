@@ -3,6 +3,7 @@ package project.code.dao;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,4 +58,10 @@ public class CourseDAO  {
 		coursesRepository.save(updatecourse);
 		return updatecourse;
 	}
-}
+	
+	//course by teacher id
+	public List<Courses> getByTeacherId(int id) {
+		List<Courses> tlist;
+		tlist=coursesRepository.findAll().stream().filter((co)->co.getTeacher().getTeacherId()==id).collect(Collectors.toList()); ;
+		return tlist;
+	}}
