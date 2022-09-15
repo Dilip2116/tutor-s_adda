@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -75,12 +77,14 @@ public class Courses
 
 	private Time course_start_time;
 
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "course")
 	private List<Student> students = new ArrayList<>();
 
 	private Time course_end_time;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@JsonIgnore
+	@ManyToOne(cascade=CascadeType.ALL ,fetch = FetchType.LAZY)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 
@@ -88,6 +92,7 @@ public class Courses
 	//	private Teacher teacher;
 	//	
 
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
 	private List<Review> review;
 

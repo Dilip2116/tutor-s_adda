@@ -21,6 +21,9 @@ import javax.persistence.TemporalType;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 public class Student {
@@ -67,6 +70,7 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
+	@JsonManagedReference
 	@ManyToMany
     @JoinTable(
             name = "course_student",
@@ -79,6 +83,7 @@ public class Student {
 		return course;
 	}
 
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "student")
 	private List<Review> review;
 	
