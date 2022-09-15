@@ -64,5 +64,20 @@ public class TeacherDAO  {
 
 	
 	
+	public Teacher  varifyteacher(String uname, String pass)
+	{
 	
+		List<Teacher> tlist;
+				
+		tlist=teacherRepository.findAll();
+		for(Teacher t : tlist)
+		{
+			if(t.getTeacher_password().equals(pass) && t.getTeacher_username().equals(uname))
+			{
+				return t;
+			}
+		}
+  return null;
+	}
+
 }
