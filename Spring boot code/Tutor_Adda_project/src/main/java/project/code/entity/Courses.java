@@ -1,6 +1,6 @@
 package project.code.entity;
 
-	
+
 
 
 import java.sql.Time;
@@ -44,13 +44,13 @@ public class Courses
 	private String course_about;
 
 	private String course_category;
-	
+
 
 	private int course_duration;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-		private Date course_start_date;
+	private Date course_start_date;
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -68,47 +68,32 @@ public class Courses
 
 
 	private int course_max_strenth;
-	private int course_student_count;
 
+	private int course_student_count;
 
 	private int course_fee;
 
 	private Time course_start_time;
-	
+
 	@ManyToMany(mappedBy = "course")
-    private List<Student> students = new ArrayList<>();
-
-	public Teacher getTeacher() {
-		return teacher;
-	}
-
-
-	public List<Student> getStudents() {
-		return students;
-	}
-
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
-
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
-
+	private List<Student> students = new ArrayList<>();
 
 	private Time course_end_time;
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
-	
-	
+
+	//	@ManyToOne(cascade=CascadeType.ALL)
+	//	private Teacher teacher;
+	//	
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
 	private List<Review> review;
 
-	
+
+
+
 	//*************************************************************************************
 	public Courses() {
 		super();
@@ -355,6 +340,24 @@ public class Courses
 	}
 
 
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 
 
 
@@ -362,11 +365,13 @@ public class Courses
 
 
 
-	
+
+
+
 	//*************************************************************************************
 
-	
-	
-	
-	
+
+
+
+
 }

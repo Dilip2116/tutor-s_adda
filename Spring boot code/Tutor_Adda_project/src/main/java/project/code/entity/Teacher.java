@@ -21,17 +21,17 @@ import org.springframework.data.relational.core.mapping.Table;
 @Entity
 public class Teacher 
 {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	
-	
+
+	@Column()
 	private int teacher_id;
 
 	private String teacher_fname;
 
 	private String teacher_lname;
-	
+
 	private String teacher_mobile;
 
 	private String teacher_gender;
@@ -47,27 +47,26 @@ public class Teacher
 	private int teacher_experience;
 
 	private String teacher_about;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
-	
+
 	public List<Courses> getCourse() {
 		return course;
 	}
 
-	public void setCourse(List<Courses> course) {
-		this.course = course;
-	}
-
 	@OneToMany(cascade=CascadeType.ALL)
-	 @JoinTable(
-	            name = "course_teacher",
-	            joinColumns = @JoinColumn(name = "teacher_id"),
-	            inverseJoinColumns = @JoinColumn(name = "course_id")
-	    )
+	@JoinTable(
+			name = "course_teacher",
+			joinColumns = @JoinColumn(name = "teacher_id"),
+			inverseJoinColumns = @JoinColumn(name = "course_id")
+			)
 	private List<Courses> course;
 
-		
+	//	@OneToMany(cascade=CascadeType.ALL,mappedBy ="teacher")
+	//	private List<Courses> course;
+
+
 	//all field
 	public Teacher(int teacherId, String teacher_fname, String teacher_lname, String teacher_mobile,
 			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
@@ -94,7 +93,7 @@ public class Teacher
 			String teacher_qualification, int teacher_experience, String teacher_about, Address address,
 			List<Courses> course) {
 		super();
-		
+
 		this.teacher_fname = teacher_fname;
 		this.teacher_lname = teacher_lname;
 		this.teacher_mobile = teacher_mobile;
@@ -108,11 +107,11 @@ public class Teacher
 		this.address = address;
 		this.course = course;
 	}
-	
+
 	public Teacher(int teacherId, String teacher_fname, String teacher_lname, String teacher_mobile,
 			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
 			String teacher_qualification, int teacher_experience, String teacher_about, Address address)
-			 {
+	{
 		super();
 		this.teacher_id = teacherId;
 		this.teacher_fname = teacher_fname;
@@ -129,6 +128,29 @@ public class Teacher
 		//this.course = course;
 	}
 
+	//all field
+	public Teacher( String teacher_fname, String teacher_lname, String teacher_mobile,
+			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
+			String teacher_qualification, int teacher_experience, String teacher_about, Address address
+			) {
+		super();
+		this.teacher_fname = teacher_fname;
+		this.teacher_lname = teacher_lname;
+		this.teacher_mobile = teacher_mobile;
+		this.teacher_gender = teacher_gender;
+		this.teacher_username = teacher_username;
+		this.teacher_password = teacher_password;
+		this.teacher_email = teacher_email;
+		this.teacher_qualification = teacher_qualification;
+		this.teacher_experience = teacher_experience;
+		this.teacher_about = teacher_about;
+		this.address = address;
+		this.course = null;
+	}
+
+	public void setCourse(List<Courses> course) {
+		this.course = course;
+	}
 	public Teacher() {
 		super();
 		// TODO Auto-generated constructor stub
