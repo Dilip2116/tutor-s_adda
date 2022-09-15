@@ -25,13 +25,7 @@ public class CoursesController {
 	CourseDAO dao;
 	
 
-	@PostMapping("/addcourse")        //Add new teacher
-	public Courses addcourse(@RequestBody Courses course)
-	{
-		dao.addcourse(course);
-		return course;
-	}
-		
+	
 	@GetMapping("/getcourse")
 	
 	public List<Courses> getcourses()  //Get all teachers
@@ -49,21 +43,6 @@ public class CoursesController {
 		course=dao.get(id);
 		return course; 
 	}
-	
-	@DeleteMapping("/deletecourse/{id}")
-	public void deletecourse(@PathVariable int id)
-	{
-		dao.deletecourse(id);
-	}
-
-    @PostMapping("/updatecourse")
-	public Courses updatecourse(@RequestBody Courses c)
-	{
-    	Courses course = new Courses();
-    	course =dao.updatecourse(c);
-    	return course;
-	}
-
 @GetMapping("/getcoursebyteacher/{id}")
 	
 	public List<Courses> getByTeacherId(@PathVariable int id)  //Get by teachers
@@ -73,6 +52,32 @@ public class CoursesController {
 		Lcourse=dao.getByTeacherId(id);
 		return Lcourse;
 	}
+	
+//*******************************************************************************
+
+	@DeleteMapping("/deletecourse/{id}")
+	public void deletecourse(@PathVariable int id)
+	{
+		dao.deletecourse(id);
+	}
+
+	@PostMapping("/addcourse")        //Add new teacher
+	public Courses addcourse(@RequestBody Courses course)
+	{
+		dao.addcourse(course);
+		return course;
+	}
+		
+	
+    @PostMapping("/updatecourse")   //update teacher
+	public Courses updatecourse(@RequestBody Courses c)
+	{
+    	Courses course = new Courses();
+    	course =dao.updatecourse(c);
+    	return course;
+	}
+
+
     
 
 
