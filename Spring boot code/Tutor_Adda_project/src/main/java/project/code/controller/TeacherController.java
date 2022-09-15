@@ -81,6 +81,14 @@ public class TeacherController {
     	t =dao.updateteacher(teacher);
     	return t;
 	}
+@GetMapping("/teacherlogin/{uname}/{pass}")
+	public Teacher getteacher (@PathVariable String uname,@PathVariable String pass) 
+	{
+		//Teacher teacher = new Teacher();
+    	Teacher teacher=dao.varifyteacher(uname,pass);
+	
 
+		return teacher;
+	}
 
 }
