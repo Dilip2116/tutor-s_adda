@@ -40,9 +40,9 @@ public class TeacherController {
 	@Autowired
 	TeacherDAO dao;
 	
-
+	
 	@PostMapping("/addteacher")        //Add new teacher
-	public Teacher addteacher(@RequestBody Teacher teacher)
+	public Teacher addteacher( @RequestBody Teacher teacher)
 	{
 		this.dao.addteacher(teacher);
 		return teacher;

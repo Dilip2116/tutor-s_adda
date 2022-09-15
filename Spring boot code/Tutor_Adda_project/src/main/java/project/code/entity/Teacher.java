@@ -17,6 +17,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Teacher 
@@ -55,6 +57,7 @@ public class Teacher
 		return course;
 	}
 
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(
 			name = "course_teacher",

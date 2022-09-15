@@ -70,7 +70,7 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
-	@JsonManagedReference
+	
 	@ManyToMany
     @JoinTable(
             name = "course_student",
@@ -111,6 +111,25 @@ public class Student {
 		this.course = course;
 		this.review = review;
 	}
+	
+	//without course and reviews 
+	//all field
+		public Student( String student_fname, String student_lname, String student_mobile,
+				String student_gender, String student_username, Date student_dob, String student_password,
+				String student_email, Address address) {
+			super();
+			
+			Student_fname = student_fname;
+			Student_lname = student_lname;
+			Student_mobile = student_mobile;
+			Student_gender = student_gender;
+			Student_username = student_username;
+			this.student_dob = student_dob;
+			Student_password = student_password;
+			Student_email = student_email;
+			this.address = address;
+			
+		}
 	//without id
 	public Student( String student_fname, String student_lname, String student_mobile,
 			String student_gender, String student_username, Date student_dob, String student_password,
