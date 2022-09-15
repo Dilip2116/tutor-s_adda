@@ -1,32 +1,38 @@
 package project.code.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.relational.core.mapping.Table;
 
+
 @Entity
-@Table(name="teacher_info")
 public class Teacher 
 {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private int teacherId;
+	
+	
+	private int teacher_id;
 
 	private String teacher_fname;
 
 	private String teacher_lname;
 	
-
 	private String teacher_mobile;
-
-	
 
 	private String teacher_gender;
 
@@ -44,12 +50,31 @@ public class Teacher
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
+	
+	public List<Courses> getCourse() {
+		return course;
+	}
 
+	public void setCourse(List<Courses> course) {
+		this.course = course;
+	}
+
+	@OneToMany(cascade=CascadeType.ALL)
+	 @JoinTable(
+	            name = "course_teacher",
+	            joinColumns = @JoinColumn(name = "teacher_id"),
+	            inverseJoinColumns = @JoinColumn(name = "course_id")
+	    )
+	private List<Courses> course;
+
+		
+	//all field
 	public Teacher(int teacherId, String teacher_fname, String teacher_lname, String teacher_mobile,
 			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
-			String teacher_qualification, int teacher_experience, String teacher_about,Address address) {
+			String teacher_qualification, int teacher_experience, String teacher_about, Address address,
+			List<Courses> course) {
 		super();
-		this.teacherId = teacherId;
+		this.teacher_id = teacherId;
 		this.teacher_fname = teacher_fname;
 		this.teacher_lname = teacher_lname;
 		this.teacher_mobile = teacher_mobile;
@@ -60,7 +85,48 @@ public class Teacher
 		this.teacher_qualification = teacher_qualification;
 		this.teacher_experience = teacher_experience;
 		this.teacher_about = teacher_about;
-		this.address=address;
+		this.address = address;
+		this.course = course;
+	}
+	//without id
+	public Teacher( String teacher_fname, String teacher_lname, String teacher_mobile,
+			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
+			String teacher_qualification, int teacher_experience, String teacher_about, Address address,
+			List<Courses> course) {
+		super();
+		
+		this.teacher_fname = teacher_fname;
+		this.teacher_lname = teacher_lname;
+		this.teacher_mobile = teacher_mobile;
+		this.teacher_gender = teacher_gender;
+		this.teacher_username = teacher_username;
+		this.teacher_password = teacher_password;
+		this.teacher_email = teacher_email;
+		this.teacher_qualification = teacher_qualification;
+		this.teacher_experience = teacher_experience;
+		this.teacher_about = teacher_about;
+		this.address = address;
+		this.course = course;
+	}
+	
+	public Teacher(int teacherId, String teacher_fname, String teacher_lname, String teacher_mobile,
+			String teacher_gender, String teacher_username, String teacher_password, String teacher_email,
+			String teacher_qualification, int teacher_experience, String teacher_about, Address address)
+			 {
+		super();
+		this.teacher_id = teacherId;
+		this.teacher_fname = teacher_fname;
+		this.teacher_lname = teacher_lname;
+		this.teacher_mobile = teacher_mobile;
+		this.teacher_gender = teacher_gender;
+		this.teacher_username = teacher_username;
+		this.teacher_password = teacher_password;
+		this.teacher_email = teacher_email;
+		this.teacher_qualification = teacher_qualification;
+		this.teacher_experience = teacher_experience;
+		this.teacher_about = teacher_about;
+		this.address = address;
+		//this.course = course;
 	}
 
 	public Teacher() {
@@ -69,7 +135,7 @@ public class Teacher
 	}
 
 	public int getTeacherId() {
-		return teacherId;
+		return teacher_id;
 	}
 
 	public Address getAddress() {
@@ -81,7 +147,7 @@ public class Teacher
 	}
 
 	public void setTeacherId(int teacherId) {
-		this.teacherId = teacherId;
+		this.teacher_id = teacherId;
 	}
 
 	public String getTeacher_fname() {

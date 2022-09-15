@@ -4,20 +4,32 @@ package project.code.entity;
 
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="course_info")
@@ -45,6 +57,16 @@ public class Courses
 	private Date course_end_date;
 
 
+	public List<Review> getReview() {
+		return review;
+	}
+
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
+
 	private int course_max_strenth;
 	private int course_student_count;
 
@@ -52,10 +74,39 @@ public class Courses
 	private int course_fee;
 
 	private Time course_start_time;
+	
+	@ManyToMany(mappedBy = "course")
+    private List<Student> students = new ArrayList<>();
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
 
 	private Time course_end_time;
 
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="teacher_id")
+	private Teacher teacher;
 	
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
+	private List<Review> review;
 
 	
 	//*************************************************************************************
@@ -65,13 +116,11 @@ public class Courses
 	}
 
 
-
-
-	
-
+	//all field
 	public Courses(int course_id, String course_name, String course_about, String course_category, int course_duration,
 			Date course_start_date, Date course_end_date, int course_max_strenth, int course_student_count,
-			int course_fee, Time course_start_time, Time course_end_time) {
+			int course_fee, Time course_start_time, List<Student> students, Time course_end_time, Teacher teacher,
+			List<Review> review) {
 		super();
 		this.course_id = course_id;
 		this.course_name = course_name;
@@ -84,10 +133,11 @@ public class Courses
 		this.course_student_count = course_student_count;
 		this.course_fee = course_fee;
 		this.course_start_time = course_start_time;
+		this.students = students;
 		this.course_end_time = course_end_time;
+		this.teacher = teacher;
+		this.review = review;
 	}
-
-
 
 
 	//*************************************************************************************

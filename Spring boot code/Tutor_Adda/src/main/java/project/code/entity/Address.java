@@ -25,6 +25,16 @@ public class Address {
 	
 	
 	//************************************************************************************
+	
+
+
+
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	//all field
 	public Address(int address_id, String street, String city, String state, String country, String pincode) {
 		super();
 		this.address_id = address_id;
@@ -33,13 +43,6 @@ public class Address {
 		this.state = state;
 		this.country = country;
 		this.pincode = pincode;
-	}
-
-
-
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
