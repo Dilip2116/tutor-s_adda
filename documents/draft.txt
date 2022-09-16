@@ -1,0 +1,28 @@
+Title:- Tutor-Adda
+----------------
+
+
+Technologies :
+	Front End:- HTML, CSS, JS(react), Bootstrap, 
+	Middle  Layer:-  Java(spring boot) 
+	Back End:- database(MYSQL),  
+
+
+Description:--
+---------------
+
+On this global Online platform, multiple teachers can launch their
+online multiple courses on any subject, and students can select the
+courses based on their preferences and reviews of teachers. This
+platform will help teachers to manage their individual schedules
+. At the end of each course, students can give reviews to the teacher regarding their
+performance to help other students while selecting courses.
+
+
+
+scope:-
+
+----
+The scope of this project covers the registration of students'and teacher personal information, assign tutorial classes to each student, teachers can manage their complete schedule, setting a unique password for confidentiality of personal information such as login menu.
+
+The registration data of the students are stored in a highly secured Relational Database Management System (RDBMS) and the students are provided with a Graphical User Interface (GUI) to communicate with the database.
