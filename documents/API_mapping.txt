@@ -1,0 +1,148 @@
+Student Mapping:
+
+Add Student:
+@PostMapping("/addstudent")
+
+http://localhost:8080/addstudent
+
+Get student:
+ @GetMapping("/getstudent")
+http://localhost:8080/getstudent
+
+
+Delete Student:
+
+ @DeleteMapping("/deletestudent/{id}")
+
+http://localhost:8080/deletestudent/{id}
+
+
+Update Student:
+@PostMapping("/updatestudent")
+
+http://localhost:8080/updatestudent
+
+
+
+Get Student by Id:
+@GetMapping("/getstudent/{id}")
+
+http://localhost:8080/getstudent/{id}
+
+
+
+----------------------------------------------------------------------
+
+Teacher Mapping:
+
+
+
+Add Teacher:
+@PostMapping("/addteacher")
+
+http://localhost:8080/addteacher
+
+
+
+show Teacher:
+
+@GetMapping("/getteacher")
+
+http://localhost:8080/getteacher
+
+
+Get teacher by Id:
+
+@GetMapping("/getteacher/{id}")
+
+http://localhost:8080/getteacher/{id}
+
+
+Delete Teacher:
+
+
+@DeleteMapping("/deleteteacher/{id}")
+
+http://localhost:8080/deleteteacher/{id}
+
+
+Update Teacher:
+
+@PostMapping("/updateteacher")
+
+http://localhost:8080/updateteacher
+
+
+Teacher login:
+
+@GetMapping("/teacherlogin/{uname}/{pass}")
+
+http://localhost:8080/teacherlogin/{uname}/{pass}
+
+
+
+--------------------------------------------------------------------------
+
+Review:
+
+Add review:
+
+@PostMapping("/addreview")
+
+http://localhost:8080/addreview
+
+
+
+show Review:
+
+ @GetMapping("/getreview")
+
+http://localhost:8080/getreview
+
+
+delete Result:
+
+ @DeleteMapping("/deletereview/{id}")
+http://localhost:8080/deletereview/{id}
+
+
+------------------------------------------------------------------------------
+Courses:
+
+
+Add new Course
+
+@PostMapping("/addcourse")   
+
+http://localhost:8080/addcourse
+
+
+Get all Courses:
+@GetMapping("/getcourse")
+http://localhost:8080/getcourse
+
+
+
+Get Course by Id:
+
+@GetMapping("/getcourse/{id}")
+
+http://localhost:8080/getcourse/{id}
+
+
+Delete Course by Id:
+
+@DeleteMapping("/deletecourse/{id}")
+
+http://localhost:8080/deletecourse/{id}
+
+
+Update Course:
+
+ @PostMapping("/updatecourse")
+
+http://localhost:8080/updatecourse
+
+
+
+
