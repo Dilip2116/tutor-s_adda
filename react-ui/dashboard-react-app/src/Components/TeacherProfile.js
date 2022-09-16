@@ -22,21 +22,19 @@ export default function TeacherProfile() {
     return (
         <>
             <body>
-                
+
                 {/* <!-- ======= Sidebar ======= --> */}
 
                 <aside id="sidebar" className="sidebar">
-
-
 
                     {/* <!-- ======= Header ======= --> */}
                 {/* <header id="header" className="header fixed-top d-flex align-items-center"> */}
                     <div className="d-flex align-items-center justify-content-between">
                         {/* <i className="bi bi-list toggle-sidebar-btn"></i> */}
                         {/* <a href="#" className="logo d-flex align-items-center">
-              <img src="assets/img/EPariksha.png" alt="" />
-              <span className="d-none d-lg-block">E-Pariksha</span>
-            </a> */}
+                            <img src="assets/img/EPariksha.png" alt="" />
+                            <span className="d-none d-lg-block">E-Pariksha</span>
+                            </a> */}
                    </div> 
                      {/*<!-- End Logo --> */}
                     <nav className="header-nav ms-auto">
@@ -140,116 +138,160 @@ export default function TeacherProfile() {
                     {/* <!-- End Page Title --> */}
                     <section class="section">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-xl-12">
                                 <div class="card">
-                                    <div class="card-body">
-                                        <center>
-                                            <div class="d-flex flex-column align-items-center text-center">
-                                                <img src="assets2/img/profile.jpg" alt="Admin" class="rounded-circle" width="150" />
-                                                <div class="mt-3">
-                                                    <h4>Mr XYZ</h4>
-                                                    <p class="text-secondary mb-1">Science Teacher</p>
-                                                    <p class="text-muted font-size-sm">Pune , India</p>
+                                    <div class="card-body pt-3">
+                                        {/* <!-- Bordered Tabs --> */}
+                                        <ul class="nav nav-tabs nav-tabs-bordered">
+                                            <li class="nav-item">
+                                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                                            </li>
+                                            <li class="nav-item">
+                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                                            </li>
+                                            <li class="nav-item">
+                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content pt-2">
+                                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                                <h5 class="card-title">Profile Details</h5>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label ">First Name</div>
+                                                    <div class="col-lg-9 col-md-8">Rahul</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label ">Last Name</div>
+                                                    <div class="col-lg-9 col-md-8">Sharma</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Mobile Number</div>
+                                                    <div class="col-lg-9 col-md-8">8622872468</div>
+                                                </div>
+                                                {/* <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Date Of Birth</div>
+                                                    <div class="col-lg-9 col-md-8">1/1/1001</div>
+                                                </div> */}
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Username</div>
+                                                    <div class="col-lg-9 col-md-8">rahul123</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Gender</div>
+                                                    <div class="col-lg-9 col-md-8">male</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                                    <div class="col-lg-9 col-md-8">rahul@example.com</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Qualification</div>
+                                                    <div class="col-lg-9 col-md-8">B.E.</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">Experience</div>
+                                                    <div class="col-lg-9 col-md-8">2 Years of teaching</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 label">About me</div>
+                                                    <div class="col-lg-9 col-md-8">my most recent position at XYZ Company, I specialized in doing ___.</div>
                                                 </div>
                                             </div>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
+                                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-                            <div class="col-lg-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>First Name</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                XYZ
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Last Name</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                ZZZ
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Gender</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                male
-                                            </div>
-                                        </div>
-                                        <hr />
+                                                <form>
+                                                    <div class="row mb-3">
+                                                        <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="firstName" type="text" class="form-control" id="firstName" value="Rahul" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="lastName" type="text" class="form-control" id="lastName" value="Sharma" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="mobno" class="col-md-4 col-lg-3 col-form-label">Mobile Number</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="mobno" type="text" class="form-control" id="mobno" value="8622872468" />
+                                                        </div>
+                                                    </div>
+                                                    {/* <div class="row mb-3">
+                                                        <label for="dob" class="col-md-4 col-lg-3 col-form-label">Date Of Birth</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="dob" type="text" class="form-control" id="dob" value="1/1/1001" />
+                                                        </div>
+                                                    </div> */}
+                                                    <div class="row mb-3">
+                                                        <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="username" type="text" class="form-control" id="username" value="rahul123" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="username" class="col-md-4 col-lg-3 col-form-label">Gender</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="username" type="text" class="form-control" id="username" value="male" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="email" type="text" class="form-control" id="Email" value="rahul@example.com" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="ssc" class="col-md-4 col-lg-3 col-form-label">Qualification</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="ssc" type="text" class="form-control" id="ssc" value="B.E." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="hsc" class="col-md-4 col-lg-3 col-form-label">Experience</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="hsc" type="text" class="form-control" id="hsc" value="2 Years of teaching" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="degree" class="col-md-4 col-lg-3 col-form-label">About me</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="degree" type="text" class="form-control" id="degree" value="my most recent position at XYZ Company, I specialized in doing ___." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    </div>
+                                                </form>
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>User name</b></h6>
                                             </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                xyz123
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Email</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                xyz@gmail.com
-                                            </div>
-                                        </div>
-                                        <hr />
+                                            <div class="tab-pane fade pt-3" id="profile-change-password">
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Mobile</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                1234567890
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Qualification</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                B.Tech
-                                            </div>
-                                        </div>
-                                        <hr />
+                                                <form>
+                                                    <div class="row mb-3">
+                                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="password" type="password" class="form-control" id="currentPassword" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="newpassword" type="password" class="form-control" id="newPassword" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                                                        <div class="col-md-8 col-lg-9">
+                                                            <input name="renewpassword" type="password" class="form-control" id="renewPassword" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary">Change Password</button>
+                                                    </div>
+                                                </form>
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>Experience</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                2 Years of teaching
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0"><b>About me</b></h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                n my most recent position at XYZ Company, I specialized in doing ___. The reason I applied for this
-                                                job is I saw ___ on the job description and I think I would be able to help you ___ and ___. One of
-                                                my key accomplishments in my last role for XYZ Company was helping them ___, and I’m confident I can
-                                                help your team get similar results here.
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <a class="btn btn-info " target="__blank" href="teacher_profile.html">Edit</a>
                                             </div>
                                         </div>
 
@@ -257,7 +299,6 @@ export default function TeacherProfile() {
                                 </div>
                             </div>
                         </div>
-
                     </section>
 
                 </main>
