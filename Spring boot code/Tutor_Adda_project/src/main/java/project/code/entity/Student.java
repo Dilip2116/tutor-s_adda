@@ -67,10 +67,12 @@ public class Student {
 	
 	private String Student_email;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
 	
+	@JsonIgnore
 	@ManyToMany
     @JoinTable(
             name = "course_student",

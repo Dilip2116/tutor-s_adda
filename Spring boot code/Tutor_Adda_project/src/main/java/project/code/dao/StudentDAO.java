@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.code.entity.Student;
-
+import project.code.entity.Teacher;
 import project.code.repository.StudentRepository;
 
 @Service
@@ -35,6 +35,21 @@ public class StudentDAO {
 
 			studentRepository.save(student);
 			return  student;
+		}
+
+
+		public Student varifystudent(String uname, String pass) {
+			List<Student> tlist;
+			
+			tlist=studentRepository.findAll();
+			for(Student t : tlist)
+			{
+				if(t.getStudent_password().equals(pass) && t.getStudent_username().equals(uname))
+				{
+					return t;
+				}
+			}
+	  return null;
 		}
 
 	

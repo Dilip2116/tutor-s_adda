@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,8 +30,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import project.code.dao.StudentDAO;
 import project.code.entity.Student;
+import project.code.entity.Teacher;
 
 
+@CrossOrigin
 @RestController
 public class StudentController {
 
@@ -61,6 +64,17 @@ public class StudentController {
 	{
 		dao.deletestudent(id);
 	}
+    
+    @PostMapping("/studentlogin/{uname}/{pass}")
+	public Student getteacher (@PathVariable String uname,@PathVariable String pass) 
+	{
+		//Teacher teacher = new Teacher();
+    	Student student=dao.varifystudent(uname,pass);
+	
+
+		return student;
+	}
+
 	
 	
 	

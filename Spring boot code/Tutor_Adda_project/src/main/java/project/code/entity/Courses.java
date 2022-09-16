@@ -29,6 +29,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -77,7 +78,7 @@ public class Courses
 
 	private Time course_start_time;
 
-	@JsonManagedReference
+	@JsonIgnore
 	@ManyToMany(mappedBy = "course")
 	private List<Student> students = new ArrayList<>();
 

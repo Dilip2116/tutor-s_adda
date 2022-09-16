@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +33,7 @@ import project.code.dao.TeacherDAO;
 import project.code.entity.Teacher;
 import project.code.repository.TeacherRepository;
 
+@CrossOrigin
 @RestController
 public class TeacherController {
 
@@ -81,7 +83,8 @@ public class TeacherController {
     	t =dao.updateteacher(teacher);
     	return t;
 	}
-@GetMapping("/teacherlogin/{uname}/{pass}")
+    
+    @PostMapping("/teacherlogin/{uname}/{pass}")
 	public Teacher getteacher (@PathVariable String uname,@PathVariable String pass) 
 	{
 		//Teacher teacher = new Teacher();
