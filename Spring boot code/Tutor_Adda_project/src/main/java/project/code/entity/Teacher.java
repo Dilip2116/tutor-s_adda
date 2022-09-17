@@ -52,6 +52,9 @@ public class Teacher
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
+	
+	@OneToOne(cascade = CascadeType.ALL)//for image
+	private FileDB image;
 
 	public List<Courses> getCourse() {
 		return course;
