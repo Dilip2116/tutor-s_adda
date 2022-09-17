@@ -12,7 +12,7 @@ function App() {
 
   const [r1, setr1] = useState(0);
   const star1 = (rating) => {
-       setr1(rating + 1);
+    setr1(rating + 1);
   };
 
   const [r2, setr2] = useState(0);
@@ -40,18 +40,24 @@ function App() {
       <div className="container , center" ><h1 className='heading'>
         Feedback Form
       </h1>
-      <table className='table'>
-        <tr><td>1) The course as a whole was:</td><td> <Q1 rfun1={star1} /></td></tr>
-        <tr><td>2) Explanations by instructor were:</td><td>  <Q2 rfun2={star2}/></td></tr>
-        <tr><td>3) Answers to student questions were:</td><td> <Q3 rfun3={star3} /></td></tr>
-        <tr><td>4) Relavence of course content was:</td><td> <Q4 rfun4={star4} /></td></tr>
-        <tr><td>5) Availability of extra help when needed was:</td><td> <Q5 rfun5={star5} /></td></tr>
-       
-       
-       
-        </table>
+        <table className='table'>
+          <tr><td>1) The course as a whole was:</td><td> <Q1 rfun1={star1} /></td></tr>
+          <tr><td>2) Explanations by instructor were:</td><td>  <Q2 rfun2={star2} /></td></tr>
+          <tr><td>3) Answers to student questions were:</td><td> <Q3 rfun3={star3} /></td></tr>
+          <tr><td>4) Relavence of course content was:</td><td> <Q4 rfun4={star4} /></td></tr>
+          <tr><td>5) Availability of extra help when needed was:</td><td> <Q5 rfun5={star5} /></td></tr>
 
 
+
+        </table><br />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}>
+
+          <button className='button1' >Submit</button>
+        </div>
       </div>
       <h1>new value={r1}</h1>
       <h1>new value={r2}</h1>
