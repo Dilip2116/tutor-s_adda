@@ -43,6 +43,9 @@ public class Student {
 	
 	private String Student_username;
 	
+	@OneToOne(cascade = CascadeType.ALL)//for image
+	private FileDB image;
+	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date student_dob;
