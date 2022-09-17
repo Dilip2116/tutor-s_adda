@@ -23,3 +23,8 @@ npm install react-bootstrap bootstrap
 /*---- for social icons in footer---- */
 
 npm install react-social-icons
+
+
+/*----- for redux storage -----
+
+npm install react-redux --save
