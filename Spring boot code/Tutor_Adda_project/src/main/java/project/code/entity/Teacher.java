@@ -46,6 +46,19 @@ public class Teacher
 
 	private String teacher_qualification;
 
+	public int getTeacher_id() {
+		return teacher_id;
+	}
+	public void setTeacher_id(int teacher_id) {
+		this.teacher_id = teacher_id;
+//	}
+//	public FileDB getImage() {
+//		return image;
+//	}
+//	public void setImage(FileDB image) {
+//		this.image = image;
+	}
+
 	private int teacher_experience;
 
 	private String teacher_about;
@@ -53,8 +66,8 @@ public class Teacher
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
-	@OneToOne(cascade = CascadeType.ALL)//for image
-	private FileDB image;
+//	@OneToOne(cascade = CascadeType.ALL)//for image
+//	private FileDB image;
 
 	public List<Courses> getCourse() {
 		return course;
@@ -153,7 +166,26 @@ public class Teacher
 		this.address = address;
 		this.course = null;
 	}
+	
+	
 
+	public Teacher(String teacher_fname, String teacher_lname, String teacher_mobile, String teacher_gender,
+			String teacher_username, String teacher_password, String teacher_email, String teacher_qualification,
+			int teacher_experience, String teacher_about, Address address, FileDB image) {
+		super();
+		this.teacher_fname = teacher_fname;
+		this.teacher_lname = teacher_lname;
+		this.teacher_mobile = teacher_mobile;
+		this.teacher_gender = teacher_gender;
+		this.teacher_username = teacher_username;
+		this.teacher_password = teacher_password;
+		this.teacher_email = teacher_email;
+		this.teacher_qualification = teacher_qualification;
+		this.teacher_experience = teacher_experience;
+		this.teacher_about = teacher_about;
+		this.address = address;
+		//this.image = image;
+	}
 	public void setCourse(List<Courses> course) {
 		this.course = course;
 	}

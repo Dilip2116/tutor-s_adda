@@ -11,53 +11,77 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "files")
 public class FileDB {
-  @Id
-  @GeneratedValue(generator = "uuid")
-  @GenericGenerator(name = "uuid", strategy = "uuid2")
-  private String id;
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String id;
 
-  private String name;
+	
 
-  private String type;
+	public int getTeacher() {
+		return teacher;
+	}
 
-  @Lob
-  private byte[] data;
+	public void setTeacher(int teacher) {
+		this.teacher = teacher;
+	}
 
-  public FileDB() {
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public FileDB(String name, String type, byte[] data) {
-    this.name = name;
-    this.type = type;
-    this.data = data;
-  }
+	private int teacher;
 
-  public String getId() {
-    return id;
-  }
+	
 
-  public String getName() {
-    return name;
-  }
+	private String name;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	private String type;
 
-  public String getType() {
-    return type;
-  }
+	@Lob
+	private byte[] data;
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	public FileDB() {
+	}
 
-  public byte[] getData() {
-    return data;
-  }
+	public FileDB(String name, String type, byte[] data) {
+		this.name = name;
+		this.type = type;
+		this.data = data;
+	}
+	public FileDB(int teacher, String name, String type, byte[] data) {
+		super();
+		this.teacher = teacher;
+		this.name = name;
+		this.type = type;
+		this.data = data;
+	}
+	public String getId() {
+		return id;
+	}
 
-  public void setData(byte[] data) {
-    this.data = data;
-  }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
 
 }

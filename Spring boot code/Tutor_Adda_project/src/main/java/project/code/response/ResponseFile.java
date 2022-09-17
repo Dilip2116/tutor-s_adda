@@ -1,7 +1,26 @@
 package project.code.response;
 
 public class ResponseFile {
-  private String name;
+	  private int teacher;
+
+  public ResponseFile(int teacher, String name, String url, String type, long size) {
+		super();
+		this.teacher = teacher;
+		this.name = name;
+		this.url = url;
+		this.type = type;
+		this.size = size;
+	}
+
+public int getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(int teacher) {
+		this.teacher = teacher;
+	}
+
+private String name;
   private String url;
   private String type;
   private long size;
