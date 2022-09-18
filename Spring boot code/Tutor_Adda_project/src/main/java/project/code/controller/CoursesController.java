@@ -77,6 +77,12 @@ public class CoursesController {
     	return course;
 	}
 
+    @PostMapping("/updatecoursefee/{id}/{fee}")   //update teacher
+   	public void updatecoursefee(@PathVariable int id,@PathVariable int fee)
+   	{
+       dao.updatecoursefee(id,fee);
+     
+   	}
 
     
 
