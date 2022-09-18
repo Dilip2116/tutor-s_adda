@@ -1,0 +1,25 @@
+dependencies to run projects:--
+
+/* ----for schedular---*/
+
+npm install @mobiscroll/calendar-integration
+
+
+/* ----for routing---*/
+
+npm install react-router-dom
+
+
+/* ----for api integration---*/
+
+npm install axios
+
+
+/* ----for bootstrap css---*/
+
+npm install react-bootstrap bootstrap
+
+
+/*---- for social icons in footer---- */
+
+npm install react-social-icons
