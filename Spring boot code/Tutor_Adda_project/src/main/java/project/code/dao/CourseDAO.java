@@ -29,7 +29,7 @@ public class CourseDAO  {
 		return (coursesRepository.findById(id).get());
 	}
 
-	//to add new teacher
+	
 	public Courses addcourse(Courses course ) {
 
 		coursesRepository.save(course);
@@ -64,4 +64,11 @@ public class CourseDAO  {
 		List<Courses> tlist;
 		tlist=coursesRepository.findAll().stream().filter((co)->co.getTeacher().getTeacherId()==id).collect(Collectors.toList()); ;
 		return tlist;
-	}}
+	}
+
+	public void updatecoursefee(int id, int fee) {
+		Courses c =coursesRepository.findById(id).get();
+		c.setCourse_fee(fee);
+		coursesRepository.save(c);
+			}
+	}
