@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<section class="pb-5 header text-center">
+    <div class="container py-5 text-white">
+        <header class="py-5">
+            <h1 class="display-4">Training Details</h1>
+
+            <hr />
+            <hr />
+
+            
+        </header>
+      
+        <!-- @{ List<TrainginEntity> list = (List<TrainginEntity>)ViewData["thelist"];} -->
+            <div class="row">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-5">
+                            <br />
+                            <a href="/training/insert/" class="btn btn-primary" role="button" style="float :left" data-placement="top" title="Edit">Add Faculty</a>
+                            
+                            <br />
+                            <hr />
+                            <hr />
+                            <!-- Responsive table -->
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Topic</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Faculty</th>
+                                            <th scope="col">Location</th>
+
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+
+
+
+                                            <!-- foreach (TrainginEntity ptrain in list)
+                                            { -->
+
+
+
+                                                                                <tr>
+                                                                                    <td>Name</td>
+                                                                                    <td>Class</td>
+                                                                                    <td>Description</td>
+                                                                                    <td>Teacher</td>
+                                                                                    <td>Subjects</td>
+                                                                                    <td>
+                                                                                        <!-- Call to action buttons -->
+
+                                                                                        <a href="~/training/edit?id=@ptrain.Id&t=@ptrain.Topic&d=@ptrain.Description&f=@ptrain.FacultyName&l=@ptrain.Location" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top" title="Edit">Update Details</a>
+
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <!-- Call to action buttons -->
+
+                                                                                        <a href="~/training/delete/@ptrain.Id" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top" title="Delete">Delete</a>
+
+                                                                                    </td>
+                                                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+</section>
+
+</body>
+</html>
