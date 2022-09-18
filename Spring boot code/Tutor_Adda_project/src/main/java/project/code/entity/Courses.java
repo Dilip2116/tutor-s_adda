@@ -52,7 +52,18 @@ public class Courses
 
 	private String course_category;
 
+    public int getCourse_teacher_id() {
+		return course_teacher_id;
+	}
 
+
+	public void setCourse_teacher_id(int course_teacher_id) {
+		this.course_teacher_id = course_teacher_id;
+	}
+
+
+	private int course_teacher_id; //course teacher id without relation
+    
 	private int course_duration;
 
 	@Temporal(TemporalType.DATE)
@@ -143,6 +154,49 @@ public class Courses
 		this.course_end_time = course_end_time;
 		this.teacher = teacher;
 		this.review = review;
+	}
+
+
+	
+	public Courses(String course_name, String course_about, String course_category, int course_teacher_id,
+			int course_duration, Date course_start_date, Date course_end_date, int course_max_strenth,
+			int course_student_count, int course_fee, Time course_start_time, List<Student> students,
+			Time course_end_time, Teacher teacher, List<Review> review) {
+		super();
+		this.course_name = course_name;
+		this.course_about = course_about;
+		this.course_category = course_category;
+		this.course_teacher_id = course_teacher_id;
+		this.course_duration = course_duration;
+		this.course_start_date = course_start_date;
+		this.course_end_date = course_end_date;
+		this.course_max_strenth = course_max_strenth;
+		this.course_student_count = course_student_count;
+		this.course_fee = course_fee;
+		this.course_start_time = course_start_time;
+		this.students = students;
+		this.course_end_time = course_end_time;
+		this.teacher = teacher;
+		this.review = review;
+	}
+
+
+	public Courses(String course_name, String course_about, String course_category, int course_teacher_id,
+			int course_duration, Date course_start_date, Date course_end_date, int course_max_strenth,
+			int course_student_count, int course_fee, Time course_start_time, Time course_end_time) {
+		super();
+		this.course_name = course_name;
+		this.course_about = course_about;
+		this.course_category = course_category;
+		this.course_teacher_id = course_teacher_id;
+		this.course_duration = course_duration;
+		this.course_start_date = course_start_date;
+		this.course_end_date = course_end_date;
+		this.course_max_strenth = course_max_strenth;
+		this.course_student_count = course_student_count;
+		this.course_fee = course_fee;
+		this.course_start_time = course_start_time;
+		this.course_end_time = course_end_time;
 	}
 
 

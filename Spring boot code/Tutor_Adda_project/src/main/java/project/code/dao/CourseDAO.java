@@ -66,9 +66,10 @@ public class CourseDAO  {
 		return tlist;
 	}
 
-	public void updatecoursefee(int id, int fee) {
+	public Courses updatecoursefee(int id, int fee) {
 		Courses c =coursesRepository.findById(id).get();
 		c.setCourse_fee(fee);
 		coursesRepository.save(c);
+		return c;
 			}
 	}
