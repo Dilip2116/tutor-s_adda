@@ -4,6 +4,7 @@ package project.code.entity;
 
 
 import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,8 +31,11 @@ import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import project.code.*;
 
 
 @Entity
@@ -76,22 +80,33 @@ public class Courses
 
 	private int course_fee;
 
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
+	@JsonFormat(pattern = "HH:mm")
 	private Time course_start_time;
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "course")
 	private List<Student> students = new ArrayList<>();
 
+
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
+	@JsonFormat(pattern = "HH:mm")
 	private Time course_end_time;
 
+	
+	
+	@JsonBackReference
 	@JsonIgnore
 	@ManyToOne(cascade=CascadeType.ALL ,fetch = FetchType.LAZY)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 
-	//	@ManyToOne(cascade=CascadeType.ALL)
-	//	private Teacher teacher;
-	//	
+//	
+////	@JoinColumn(name="teacher_id",nullable=false,updatable=false,insertable=true)
+//		@ManyToOne(fetch=FetchType.LAZY)
+////		@JsonBackReference
+//		private Teacher teacher;
+		
 
 	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
