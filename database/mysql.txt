@@ -35,7 +35,7 @@ DELIMITER //
 Create Trigger course_registration  
 AFTER INSERT ON registration FOR EACH ROW  
 BEGIN  
-update courses set course_student_count=(course_student_count+1) where course_id=new.course_id;  
+update courses set course_student_count=(course_student_count+1) where course_id=new.course1_id;  
 END //
 DELIMITER ;
   
