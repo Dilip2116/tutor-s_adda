@@ -87,6 +87,7 @@ public class Courses
 
 	private int course_max_strenth;
 
+	@Column(columnDefinition = "integer default 0")
 	private int course_student_count;
 
 	private int course_fee;
