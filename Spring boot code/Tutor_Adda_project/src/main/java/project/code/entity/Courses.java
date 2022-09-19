@@ -109,7 +109,7 @@ public class Courses
 	
 	@JsonBackReference
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL ,fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL ,fetch = FetchType.EAGER)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 

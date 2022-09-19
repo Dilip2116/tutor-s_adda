@@ -62,7 +62,7 @@ public class CourseDAO  {
 	//course by teacher id
 	public List<Courses> getByTeacherId(int id) {
 		List<Courses> tlist;
-		tlist=coursesRepository.findAll().stream().filter((co)->co.getTeacher().getTeacherId()==id).collect(Collectors.toList()); ;
+		tlist=coursesRepository.findAll().stream().filter((co)->co.getCourse_teacher_id()==id).collect(Collectors.toList()); ;
 		return tlist;
 	}
 

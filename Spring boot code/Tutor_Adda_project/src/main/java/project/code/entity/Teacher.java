@@ -71,9 +71,9 @@ public class Teacher
 //	@OneToOne(cascade = CascadeType.ALL)//for image
 //	private FileDB image;
 
-	public List<Courses> getCourse() {
-		return course;
-	}
+//	public List<Courses> getCourse() {
+//		return course;
+//	}
 
 //	@JsonIgnore
 //	@OneToMany(cascade=CascadeType.ALL)
