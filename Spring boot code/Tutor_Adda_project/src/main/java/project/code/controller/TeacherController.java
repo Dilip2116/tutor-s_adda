@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -115,6 +116,15 @@ public class TeacherController {
 		      message = "Could not upload the file: " + file.getOriginalFilename() + "!";
 		      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
 		    }
+	}
+	
+	
+	@PatchMapping("/updateteacher/{id}")
+	public Teacher updateTeacherbyid(@RequestBody Teacher teacher)
+	{
+    	Teacher t = new Teacher();
+    	t =dao.updateteacher(teacher);
+    	return t;
 	}
 
 }
