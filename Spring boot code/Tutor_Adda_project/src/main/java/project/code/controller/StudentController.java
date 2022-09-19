@@ -77,7 +77,13 @@ public class StudentController {
 		return student;
 	}
 
-	
+
+@GetMapping("/studentcount")
+public int studentcount()
+{
+	int n=dao.getcount();
+	return n;
+}
 	
 	
 }

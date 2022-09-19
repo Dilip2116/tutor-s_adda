@@ -99,6 +99,12 @@ public class CoursesController {
      
    	}
 
+	@GetMapping("/coursecount")
+	public int coursecount()
+	{
+		int n=dao.getcount();
+		return n;
+	}
     
 
 

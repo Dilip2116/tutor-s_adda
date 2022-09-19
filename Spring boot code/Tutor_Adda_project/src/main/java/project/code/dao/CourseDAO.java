@@ -72,4 +72,9 @@ public class CourseDAO  {
 		coursesRepository.save(c);
 		return c;
 			}
+
+	public int getcount() {
+		int n=coursesRepository.coursecount();
+		return n;
+	}
 	}

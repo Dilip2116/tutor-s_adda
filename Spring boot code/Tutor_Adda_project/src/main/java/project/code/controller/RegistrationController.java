@@ -13,14 +13,10 @@ import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.CrossOrigin;
-=======
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
->>>>>>> 69039a3bfc5bc07334e16da9ed5039b5b6100c1d
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,16 +39,8 @@ import project.code.repository.RegistrationRepository;
 @RestController
 public class RegistrationController {
 
-<<<<<<< HEAD
-@CrossOrigin
-@RestController
-public class ReviewController {
-	
-	
-=======
 	@Autowired
 	RegistrationRepository registrationrepository;
->>>>>>> 69039a3bfc5bc07334e16da9ed5039b5b6100c1d
 	
 	@Autowired
 	RegistrationDAO dao;

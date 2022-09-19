@@ -8,12 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.code.entity.CompositeRegister;
 import project.code.entity.Registration;
 
 
 
 @Repository
-public interface RegistrationRepository extends JpaRepository<Registration, Integer> {
+public interface RegistrationRepository extends JpaRepository<Registration, CompositeRegister> {
 }
 
 

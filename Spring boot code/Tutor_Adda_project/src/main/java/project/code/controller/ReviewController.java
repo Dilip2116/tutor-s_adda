@@ -1,5 +1,6 @@
 package project.code.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import project.code.dao.ReviewDAO;
 
 import project.code.entity.Review;
+import project.code.repository.ReviewRepository;
 
 
 @RestController
 public class ReviewController {
 	
 	
+	@Autowired
+	ReviewRepository reviewRepository;
 	
 	@Autowired
 	ReviewDAO dao;
@@ -48,5 +52,17 @@ public class ReviewController {
 		dao.deletereview(id);
 	}
 	
+@GetMapping("/reviewbycourse/{id}")
+public List<Integer> reviewbycourse(@PathVariable int id)
+{
+	List<Integer> review =new ArrayList<Integer>() ;
+	review.add(reviewRepository.getreview2(id));
+	review.add(reviewRepository.getreview3(id));
+	review.add(reviewRepository.getreview4(id));
+	review.add(reviewRepository.getreview5(id));
+	
+	return review;
+	
+}
 
 }

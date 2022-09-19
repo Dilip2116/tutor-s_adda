@@ -52,5 +52,12 @@ public class StudentDAO {
 	  return null;
 		}
 
+
+		public int getcount() {
+			int n =studentRepository.studentcount();
+			return n ;
+		}
+
+		
 	
 }

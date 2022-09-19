@@ -17,6 +17,7 @@ import project.code.entity.Courses;
 @Repository
 public interface CoursesRepository extends JpaRepository<Courses, Integer> {
 	
-	
+	@Query(value="select count(course_id) from courses;",nativeQuery=true)
+	public int coursecount();
 }
 
