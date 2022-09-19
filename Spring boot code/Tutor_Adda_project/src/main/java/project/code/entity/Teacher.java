@@ -85,8 +85,8 @@ public class Teacher
 //	private List<Courses> course;
 
 	@JsonIgnore
-	 @OneToMany(mappedBy = "teacher",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	 @JsonManagedReference
+	 @OneToMany(mappedBy = "teacher",cascade = CascadeType.ALL)
+
 		private List<Courses> course;
 
 

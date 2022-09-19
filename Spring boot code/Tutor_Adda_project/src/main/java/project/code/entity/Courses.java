@@ -98,6 +98,7 @@ public class Courses
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "course")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Student> students = new ArrayList<>();
 
 
@@ -107,8 +108,8 @@ public class Courses
 
 	
 	
-	@JsonBackReference
-	@JsonIgnore
+//	@JsonBackReference
+//	@JsonIgnore
 	@ManyToOne(cascade=CascadeType.ALL ,fetch = FetchType.EAGER)
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;

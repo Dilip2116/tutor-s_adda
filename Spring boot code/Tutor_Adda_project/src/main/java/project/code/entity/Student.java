@@ -31,7 +31,7 @@ public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private int StudentId;
+	private int student_id;
 	
     private String Student_fname;
 	
@@ -43,8 +43,8 @@ public class Student {
 	
 	private String Student_username;
 	
-	@OneToOne(cascade = CascadeType.ALL)//for image
-	private FileDB image;
+//	@OneToOne(cascade = CascadeType.ALL)//for image
+//	private FileDB image;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -70,7 +70,7 @@ public class Student {
 	
 	private String Student_email;
 	
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
@@ -99,11 +99,11 @@ public class Student {
 
 	
 	//all field
-	public Student(int studentId, String student_fname, String student_lname, String student_mobile,
+	public Student(int student_id, String student_fname, String student_lname, String student_mobile,
 			String student_gender, String student_username, Date student_dob, String student_password,
 			String student_email, Address address, List<Courses> course, List<Review> review) {
 		super();
-		StudentId = studentId;
+		this.student_id = student_id;
 		Student_fname = student_fname;
 		Student_lname = student_lname;
 		Student_mobile = student_mobile;
@@ -169,11 +169,11 @@ public class Student {
 	
 
 	public int getStudentId() {
-		return StudentId;
+		return student_id;
 	}
 
 	public void setStudentId(int studentId) {
-		StudentId = studentId;
+		student_id = studentId;
 	}
 
 	public String getStudent_fname() {

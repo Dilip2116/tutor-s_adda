@@ -70,6 +70,8 @@ public class StudentController {
 	{
 		//Teacher teacher = new Teacher();
     	Student student=dao.varifystudent(uname,pass);
+    	
+    	System.out.println(student.getStudent_lname());
 	
 
 		return student;
