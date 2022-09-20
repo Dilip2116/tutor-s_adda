@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import project.code.dao.ReviewDAO;
 import project.code.entity.Review;
 import project.code.repository.ReviewRepository;
 
-
+@CrossOrigin
 @RestController
 public class ReviewController {
 	
@@ -53,7 +54,7 @@ public class ReviewController {
 	}
 	
 @GetMapping("/reviewbycourse/{id}")
-public int reviewbycourse(@PathVariable int id)
+public List<Integer> reviewbycourse(@PathVariable int id)
 {
 	List<Integer> review =new ArrayList<Integer>() ;
 	review.add(reviewRepository.getreview2(id));
@@ -62,7 +63,7 @@ public int reviewbycourse(@PathVariable int id)
 	review.add(reviewRepository.getreview5(id));
 	int n =reviewRepository.getreview3(id);
 	
-	return n;
+	return review;
 	
 }
 
