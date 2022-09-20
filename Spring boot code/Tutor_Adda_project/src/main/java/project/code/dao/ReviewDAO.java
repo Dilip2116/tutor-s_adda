@@ -1,5 +1,6 @@
 package project.code.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,9 +43,23 @@ public class ReviewDAO {
 			return  review;
 		}
 
-		public int getcount(int id) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+	
 
+		public int teacherreview1(int id)
+		{
+			int n = reviewRepository.teacherreview(id);
+			return n;
+		}
+		public List<Integer> reviewbycourse(int id)
+		{
+			List<Integer> review =new ArrayList<Integer>();
+	//		int n=reviewRepository.getreview2(id);
+
+			review.add(reviewRepository.getreviews2(id));
+			review.add(reviewRepository.getreviews3(id));
+			review.add(reviewRepository.getreviews4(id));
+			review.add(reviewRepository.getreviews5(id));
+			int n =reviewRepository.getreviews3(id);
+			return review;
+		}
 }

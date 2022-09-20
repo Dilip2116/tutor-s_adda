@@ -74,15 +74,15 @@ public class Courses
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date course_end_date;
 
+//
+//	public List<Review> getReview() {
+//		return review;
+//	}
 
-	public List<Review> getReview() {
-		return review;
-	}
 
-
-	public void setReview(List<Review> review) {
-		this.review = review;
-	}
+//	public void setReview(List<Review> review) {
+//		this.review = review;
+//	}
 
 
 	private int course_max_strenth;
@@ -121,9 +121,9 @@ public class Courses
 //		private Teacher teacher;
 		
 
-	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
-	private List<Review> review;
+//	@JsonIgnore
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy = "course")
+//	private List<Review> review;
 
 
 
@@ -138,8 +138,8 @@ public class Courses
 	//all field
 	public Courses(int course_id, String course_name, String course_about, String course_category, int course_duration,
 			Date course_start_date, Date course_end_date, int course_max_strenth, int course_student_count,
-			int course_fee, Time course_start_time, List<Student> students, Time course_end_time, Teacher teacher,
-			List<Review> review) {
+			int course_fee, Time course_start_time, List<Student> students, Time course_end_time, Teacher teacher
+	) {
 		super();
 		this.course_id = course_id;
 		this.course_name = course_name;
@@ -155,7 +155,6 @@ public class Courses
 		this.students = students;
 		this.course_end_time = course_end_time;
 		this.teacher = teacher;
-		this.review = review;
 	}
 
 
@@ -163,7 +162,7 @@ public class Courses
 	public Courses(String course_name, String course_about, String course_category, int course_teacher_id,
 			int course_duration, Date course_start_date, Date course_end_date, int course_max_strenth,
 			int course_student_count, int course_fee, Time course_start_time, List<Student> students,
-			Time course_end_time, Teacher teacher, List<Review> review) {
+			Time course_end_time, Teacher teacher) {
 		super();
 		this.course_name = course_name;
 		this.course_about = course_about;
@@ -179,7 +178,6 @@ public class Courses
 		this.students = students;
 		this.course_end_time = course_end_time;
 		this.teacher = teacher;
-		this.review = review;
 	}
 
 

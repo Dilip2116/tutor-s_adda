@@ -58,13 +58,13 @@ public class Student {
 		this.student_dob = student_dob;
 	}
 
-	public List<Review> getReview() {
-		return review;
-	}
-
-	public void setReview(List<Review> review) {
-		this.review = review;
-	}
+//	public List<Review> getReview() {
+//		return review;
+//	}
+//
+//	public void setReview(List<Review> review) {
+//		this.review = review;
+//	}
 
 	private String Student_password;
 	
@@ -88,9 +88,9 @@ public class Student {
 		return course;
 	}
 
-	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "student")
-	private List<Review> review;
+//	@JsonIgnore
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy = "student")
+//	private List<Review> review;
 	
 	
 	public void setCourse(List<Courses> course) {
@@ -101,7 +101,7 @@ public class Student {
 	//all field
 	public Student(int student_id, String student_fname, String student_lname, String student_mobile,
 			String student_gender, String student_username, Date student_dob, String student_password,
-			String student_email, Address address, List<Courses> course, List<Review> review) {
+			String student_email, Address address, List<Courses> course) {
 		super();
 		this.student_id = student_id;
 		Student_fname = student_fname;
@@ -114,7 +114,7 @@ public class Student {
 		Student_email = student_email;
 		this.address = address;
 		this.course = course;
-		this.review = review;
+		//this.review = review;
 	}
 	
 	//without course and reviews 
@@ -136,11 +136,28 @@ public class Student {
 			
 		}
 	//without id
-	public Student( String student_fname, String student_lname, String student_mobile,
-			String student_gender, String student_username, Date student_dob, String student_password,
-			String student_email, Address address, List<Courses> course, List<Review> review) {
+//	public Student( String student_fname, String student_lname, String student_mobile,
+//			String student_gender, String student_username, Date student_dob, String student_password,
+//			String student_email, Address address, List<Courses> course) {
+//		super();
+//		
+//		Student_fname = student_fname;
+//		Student_lname = student_lname;
+//		Student_mobile = student_mobile;
+//		Student_gender = student_gender;
+//		Student_username = student_username;
+//		this.student_dob = student_dob;
+//		Student_password = student_password;
+//		Student_email = student_email;
+//		this.address = address;
+//		this.course = course;
+//		//this.review = review;
+//	}
+
+	public Student(String student_fname, String student_lname, String student_mobile, String student_gender,
+			String student_username, Date student_dob, String student_password, String student_email, Address address,
+			List<Courses> course) {
 		super();
-		
 		Student_fname = student_fname;
 		Student_lname = student_lname;
 		Student_mobile = student_mobile;
@@ -151,7 +168,6 @@ public class Student {
 		Student_email = student_email;
 		this.address = address;
 		this.course = course;
-		this.review = review;
 	}
 
 	public Address getAddress() {

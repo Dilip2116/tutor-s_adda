@@ -22,7 +22,7 @@ import project.code.entity.Courses;
 
 
 	
-@CrossOrigin//(origins ="http://localhost:3000" )
+@CrossOrigin(origins ="http://localhost:3000" )
 @RestController
 public class CoursesController {
 

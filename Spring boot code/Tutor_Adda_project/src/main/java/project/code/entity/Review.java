@@ -24,19 +24,29 @@ public class Review {
 	private int fourth_rating;
 	private int fifth_rating;
 	
-	@ManyToOne
-	@JoinColumn(name="course_id")
-	private Courses course;
 	
-	@ManyToOne
-	@JoinColumn(name="student_id")
-	private Student student;
+	private int courseid;
 	
 	
+	private int studentid;
+
+	public Review(int reviewId, int first_rating, int second_rating, int third_rating, int fourth_rating,
+			int fifth_rating, int course_id, int student_id) {
+		super();
+		ReviewId = reviewId;
+		this.first_rating = first_rating;
+		this.second_rating = second_rating;
+		this.third_rating = third_rating;
+		this.fourth_rating = fourth_rating;
+		this.fifth_rating = fifth_rating;
+		this.courseid = course_id;
+		this.studentid = student_id;
+	}
+
+
 	public int getReviewId() {
 		return ReviewId;
 	}
-
 
 
 	public void setReviewId(int reviewId) {
@@ -44,79 +54,107 @@ public class Review {
 	}
 
 
-
-	public Courses getCourse() {
-		return course;
+	public int getFirst_rating() {
+		return first_rating;
 	}
 
 
-
-	public void setCourse(Courses course) {
-		this.course = course;
+	public void setFirst_rating(int first_rating) {
+		this.first_rating = first_rating;
 	}
 
 
-
-	public Student getStudent() {
-		return student;
+	public int getSecond_rating() {
+		return second_rating;
 	}
 
 
-
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setSecond_rating(int second_rating) {
+		this.second_rating = second_rating;
 	}
-	
-	
-	
+
+
+	public int getThird_rating() {
+		return third_rating;
+	}
+
+
+	public void setThird_rating(int third_rating) {
+		this.third_rating = third_rating;
+	}
+
+
+	public int getFourth_rating() {
+		return fourth_rating;
+	}
+
+
+	public void setFourth_rating(int fourth_rating) {
+		this.fourth_rating = fourth_rating;
+	}
+
+
+	public int getFifth_rating() {
+		return fifth_rating;
+	}
+
+
+	public void setFifth_rating(int fifth_rating) {
+		this.fifth_rating = fifth_rating;
+	}
+
+
+	public int getCourse_id() {
+		return courseid;
+	}
+
+
+	public void setCourse_id(int course_id) {
+		this.courseid = course_id;
+	}
+
+
+	public int getStudent_id() {
+		return studentid;
+	}
+
+
+	public void setStudent_id(int student_id) {
+		this.studentid = student_id;
+	}
+
+
 	public Review() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-		
-	//all field
-	public Review(int reviewId, int first_rating, int second_rating, int third_rating, int fourth_rating,
-			int fifth_rating, Courses course, Student student) {
+
+
+	public Review(int first_rating, int second_rating, int third_rating, int fourth_rating, int fifth_rating,
+			int course_id, int student_id) {
 		super();
-		ReviewId = reviewId;
 		this.first_rating = first_rating;
 		this.second_rating = second_rating;
 		this.third_rating = third_rating;
 		this.fourth_rating = fourth_rating;
 		this.fifth_rating = fifth_rating;
-		this.course = course;
-		this.student = student;
+		this.courseid = course_id;
+		this.studentid = student_id;
 	}
 
-	public int getFirst_rating() {
-		return first_rating;
-	}
-	public void setFirst_rating(int first_rating) {
+
+	public Review(int first_rating, int second_rating, int third_rating, int fourth_rating, int fifth_rating,
+			int course_id) {
+		super();
 		this.first_rating = first_rating;
-	}
-	public int getSecond_rating() {
-		return second_rating;
-	}
-	public void setSecond_rating(int second_rating) {
 		this.second_rating = second_rating;
-	}
-	public int getThird_rating() {
-		return third_rating;
-	}
-	public void setThird_rating(int third_rating) {
 		this.third_rating = third_rating;
-	}
-	public int getFourth_rating() {
-		return fourth_rating;
-	}
-	public void setFourth_rating(int fourth_rating) {
 		this.fourth_rating = fourth_rating;
-	}
-	public int getFifth_rating() {
-		return fifth_rating;
-	}
-	public void setFifth_rating(int fifth_rating) {
 		this.fifth_rating = fifth_rating;
+		this.courseid = course_id;
 	}
+	
+	
+	
 		
 }
