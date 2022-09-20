@@ -84,6 +84,13 @@ public int studentcount()
 	int n=dao.getcount();
 	return n;
 }
-	
+
+@GetMapping("/coursesbystudentid/{id}")
+public List<Integer> coursesbystudentid(@PathVariable int id)
+{
+	List<Integer> courses;
+	courses =dao.coursesbystudentid(id);
+	return courses;
+}
 	
 }

@@ -106,6 +106,11 @@ public class CoursesController {
 		return n;
 	}
     
-
-
+@GetMapping("/getcoursebydate/{date}/{tid}")
+	public List<Courses>  getcoursebydate (@PathVariable String date,@PathVariable int tid) 
+	{
+	List<Courses> lcourse ;
+	lcourse=dao.coursebydate(date ,tid);
+	return lcourse;
+}
 }

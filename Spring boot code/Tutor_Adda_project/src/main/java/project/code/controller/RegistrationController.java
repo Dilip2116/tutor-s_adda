@@ -45,13 +45,13 @@ public class RegistrationController {
 	@Autowired
 	RegistrationDAO dao;
 
-	@PostMapping("/register")
-	public Registration addstudent(@RequestBody Registration regi)
-	{
-		Registration r =new Registration();
-		r = dao.newregistration(regi);
-		return r;
-	}
+//	@PostMapping("/register")
+//	public Registration addstudent(@RequestBody Registration regi)
+//	{
+//		Registration r =new Registration();
+//		r = dao.newregistration(regi);
+//		return r;
+//	}
 
 	@GetMapping("/getregister")
 	public List<Registration> getall()
@@ -60,7 +60,17 @@ public class RegistrationController {
 		return obj;
 	}
 
-
+	@PostMapping("/register")
+	public boolean addstudent2(@RequestBody Registration regi)
+	{
+		boolean r = dao.ispresent(regi);
+		if(r)
+		{
+			Registration r1 =new Registration();
+			r1 = dao.newregistration(regi);
+		}
+		return r;
+	}
 }
 
 

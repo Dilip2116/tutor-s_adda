@@ -53,15 +53,16 @@ public class ReviewController {
 	}
 	
 @GetMapping("/reviewbycourse/{id}")
-public List<Integer> reviewbycourse(@PathVariable int id)
+public int reviewbycourse(@PathVariable int id)
 {
 	List<Integer> review =new ArrayList<Integer>() ;
 	review.add(reviewRepository.getreview2(id));
 	review.add(reviewRepository.getreview3(id));
 	review.add(reviewRepository.getreview4(id));
 	review.add(reviewRepository.getreview5(id));
+	int n =reviewRepository.getreview3(id);
 	
-	return review;
+	return n;
 	
 }
 

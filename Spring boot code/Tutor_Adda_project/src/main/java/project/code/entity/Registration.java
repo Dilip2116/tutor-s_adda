@@ -24,6 +24,7 @@ public class Registration
 @Id
 	private int student1_id;
 @Id
+
 	private int course1_id;
 
 	//	public int getRegistration_id() {

@@ -58,6 +58,13 @@ public class StudentDAO {
 			return n ;
 		}
 
+
+		public List<Integer> coursesbystudentid(int id) {
+			List<Integer>  courses;
+			courses = studentRepository.getcoursebystudentid(id);
+			return courses;
+		}
+
 		
 	
 }

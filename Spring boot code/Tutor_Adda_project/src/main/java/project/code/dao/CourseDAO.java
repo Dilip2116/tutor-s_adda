@@ -77,4 +77,13 @@ public class CourseDAO  {
 		int n=coursesRepository.coursecount();
 		return n;
 	}
+
+	public List<Courses> coursebydate(String date ,int tid) {
+		
+		List<Courses> lcourse ;
+
+		lcourse=coursesRepository.coursebydate(date ,tid);
+		return lcourse;
+	}
+	
 	}

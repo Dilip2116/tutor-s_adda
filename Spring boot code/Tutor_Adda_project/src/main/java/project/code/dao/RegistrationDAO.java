@@ -1,6 +1,7 @@
 package project.code.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,15 @@ public class RegistrationDAO {
 	public List<Registration> gettall() {
 		List<Registration> obj = registrationrepository.findAll();
 		return null;
+	}
+
+	public boolean ispresent(Registration regi) {
+	
+	Registration r = registrationrepository.findByStudent1_idAndCourse1_id(regi.getCourse1_id(),regi.getStudent1_id());
+		if(r==null)
+		return true;
+		
+		else return false;
 	}
 
 }
