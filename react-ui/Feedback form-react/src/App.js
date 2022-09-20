@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import ShowRating from './ShowRating';
+import TeacherRating from './TeacherRating';
 
 import Q1 from './Q1';
 import Q2 from './Q2';
@@ -40,8 +43,8 @@ function App() {
       <div className="container , center" ><h1 className='heading'>
         Feedback Form
       </h1>
-        <table className='table'>
-          <tr><td>1) The course as a whole was:</td><td> <Q1 rfun1={star1} /></td></tr>
+        <table className='table'><tr><td><i class="bi bi-star-fill"></i></td></tr>
+          <tr><td>1) Overall rating for teacher:</td><td> <Q1 rfun1={star1} /></td></tr>
           <tr><td>2) Explanations by instructor were:</td><td>  <Q2 rfun2={star2} /></td></tr>
           <tr><td>3) Answers to student questions were:</td><td> <Q3 rfun3={star3} /></td></tr>
           <tr><td>4) Relavence of course content was:</td><td> <Q4 rfun4={star4} /></td></tr>
@@ -50,6 +53,8 @@ function App() {
 
 
         </table><br />
+        
+        
         <div
           style={{
             display: "flex",
@@ -59,11 +64,15 @@ function App() {
           <button className='button1' >Submit</button>
         </div>
       </div>
+      <i class="bi bi-1-circle"></i>
       <h1>new value={r1}</h1>
       <h1>new value={r2}</h1>
       <h1>new value={r3}</h1>
       <h1>new value={r4}</h1>
       <h1>new value={r5}</h1>
+      <ShowRating/>
+      <TeacherRating/>
+
     </div>
   );
 }
