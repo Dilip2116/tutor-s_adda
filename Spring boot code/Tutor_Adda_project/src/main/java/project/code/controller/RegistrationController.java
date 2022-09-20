@@ -27,63 +27,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import project.code.dao.RegistrationDAO;
 import project.code.dao.StudentDAO;
+import project.code.entity.Registration;
 import project.code.entity.Student;
 import project.code.entity.Teacher;
+import project.code.repository.RegistrationRepository;
 
 
 @CrossOrigin
 @RestController
-public class StudentController {
+public class RegistrationController {
 
+	@Autowired
+	RegistrationRepository registrationrepository;
 	
 	@Autowired
-	StudentDAO dao;
-	
-	@PostMapping("/addstudent")
-	public Student addstudent(@RequestBody Student student)
-	{
-		this.dao.addstudent(student);
-		return student;
-	}
-	
-	
-    @GetMapping("/getstudent")
-	public List<Student> getstudent()
-	{
-		List<Student> LStudent;
-	
-	    LStudent=dao.getAll();
-		return LStudent;
+	RegistrationDAO dao;
 
-	}
-    
-    @DeleteMapping("/deletestudent/{id}")
-	public void deletestudent(@PathVariable int id)
+	@PostMapping("/register")
+	public Registration addstudent(@RequestBody Registration regi)
 	{
-		dao.deletestudent(id);
+		Registration r =new Registration();
+		r = dao.newregistration(regi);
+		return r;
 	}
-    
-    @PostMapping("/studentlogin/{uname}/{pass}")
-	public Student getteacher (@PathVariable String uname,@PathVariable String pass) 
-	{
-		//Teacher teacher = new Teacher();
-    	Student student=dao.varifystudent(uname,pass);
-    	
-    	System.out.println(student.getStudent_lname());
-	
 
-		return student;
+	@GetMapping("/getregister")
+	public List<Registration> getall()
+	{
+		List<Registration> obj = registrationrepository.findAll();
+		return obj;
 	}
 
 
-@GetMapping("/studentcount")
-public int studentcount()
-{
-	int n=dao.getcount();
-	return n;
 }
-	
-	
-}
+
+
+

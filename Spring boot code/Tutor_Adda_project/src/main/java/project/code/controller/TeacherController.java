@@ -116,5 +116,12 @@ public class TeacherController {
 		      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
 		    }
 	}
+	
+	@GetMapping("/teachercount")
+	public int teachercount()
+	{
+		int n=dao.getcount();
+		return n;
+	}
 
 }

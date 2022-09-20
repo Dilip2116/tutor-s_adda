@@ -3,6 +3,7 @@ package project.code.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import project.code.dao.CourseDAO;
 import project.code.entity.Courses;
@@ -28,7 +34,7 @@ public class CoursesController {
 	
 	@GetMapping("/getcourse")
 	
-	public List<Courses> getcourses()  //Get all teachers
+	public List<Courses> getcourses()  //Get all courses
 	{
 		List<Courses> Lcourse ;
 	
@@ -60,7 +66,9 @@ public class CoursesController {
 	{
 		dao.deletecourse(id);
 	}
-
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	  @JsonSerialize(using = LocalDateSerializer.class)
 	@PostMapping("/addcourse")        //Add new teacher
 	public Courses addcourse(@RequestBody Courses course)
 	{
@@ -68,8 +76,14 @@ public class CoursesController {
 		return course;
 	}
 		
+	@PostMapping("/addnewcourse")        //Add new course
+	public Courses addnewcourse(@RequestBody Courses course)
+	{
+		dao.addcourse(course);
+		return course;
+	}
 	
-    @PostMapping("/updatecourse")   //update teacher
+    @PostMapping("/updatecourse")   //update course
 	public Courses updatecourse(@RequestBody Courses c)
 	{
     	Courses course = new Courses();
@@ -77,13 +91,20 @@ public class CoursesController {
     	return course;
 	}
 
-    @PostMapping("/updatecoursefee/{id}/{fee}")   //update teacher
-   	public void updatecoursefee(@PathVariable int id,@PathVariable int fee)
+    @PostMapping("/updatecoursefee/{id}/{fee}")   //update fee
+   	public Courses updatecoursefee(@PathVariable int id,@PathVariable int fee)
    	{
-       dao.updatecoursefee(id,fee);
+      Courses  course =dao.updatecoursefee(id,fee);
+       return course;
      
    	}
 
+	@GetMapping("/coursecount")
+	public int coursecount()
+	{
+		int n=dao.getcount();
+		return n;
+	}
     
 
 

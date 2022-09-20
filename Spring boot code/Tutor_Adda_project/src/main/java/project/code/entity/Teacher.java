@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.relational.core.mapping.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -69,21 +71,23 @@ public class Teacher
 //	@OneToOne(cascade = CascadeType.ALL)//for image
 //	private FileDB image;
 
-	public List<Courses> getCourse() {
-		return course;
-	}
+//	public List<Courses> getCourse() {
+//		return course;
+//	}
+
+//	@JsonIgnore
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinTable(
+//			name = "course_teacher",
+//			joinColumns = @JoinColumn(name = "teacher_id"),
+//			inverseJoinColumns = @JoinColumn(name = "course_id")
+//			)
+//	private List<Courses> course;
 
 	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(
-			name = "course_teacher",
-			joinColumns = @JoinColumn(name = "teacher_id"),
-			inverseJoinColumns = @JoinColumn(name = "course_id")
-			)
-	private List<Courses> course;
+	 @OneToMany(mappedBy = "teacher",cascade = CascadeType.ALL)
 
-	//	@OneToMany(cascade=CascadeType.ALL,mappedBy ="teacher")
-	//	private List<Courses> course;
+		private List<Courses> course;
 
 
 	//all field

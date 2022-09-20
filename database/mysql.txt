@@ -1,0 +1,41 @@
+ insert into courses values(default,"Sub-1","java-1",10,'2022-01-20','10:00:00',1000,20,"JAVA-I",'2022-01-05','11:00:00',11,1);
+ insert into courses values(default,"Sub-2","java-2",20,'2022-02-20','11:00:00',2000,25,"JAVA-II",'2022-02-05','12:00:00',12,2);
+ insert into courses values(default,"Sub-3","java-3",30,'2022-03-20','12:00:00',3000,25,"JAVA-III",'2022-03-05','01:00:00',14,3);
+ insert into courses values(default,"sub-4","java-4",40,'2022-04-20','01:00:00',4000,25,"JAVA-IV",'2022-04-05','02:00:00',22,4);
+
+
+
+ insert into teacher values(default,"Good teacher","one@gmail.com",1,"Teacher-1","female","mam-1","1111","111","Engg","aaaa",1);
+ insert into teacher values(default,"Good teacher","two@gmail.com",2,"Teacher-2","male","sir-1","2222","222","Engg","bbbb",2);
+ insert into teacher values(default,"Good teacher","three@gmail.com",3,"Teacher-3","female","mam-2","3333","333","Engg","cccc",3);
+ insert into teacher values(default,"Good teacher","four@gmail.com",4,"Teacher-4","male","sir-2","4444","444","Engg","dddd",4);
+
+
+insert into address values(default,"city-1","India-1","455450","mh-1","road-1");
+insert into address values(default,"city-2","India-2","455450","mh-1","ok rd");
+insert into address values(default,"Dhule","India","455450","Rj-1","np rd");
+insert into address values(default,"Dhule","India","455450","Kn-1","mg rd");
+
+
+insert into student values (default,"s1@gmail.com","stud-1","male","obama","123123","123","stud-1",'1996-05-01',1);
+insert into student values (default,"s2@gmail.com","stud-2","male","obama","123123","123","stud-2",'1999-11-01',2);
+insert into student values (default,"s3@gmail.com","stud-3","male","obama","123123","123","stud-3",'2000-03-01',3);
+insert into student values (default,"s4@gmail.com","stud-4","male","obama","123123","123","stud-4",'2006-02-01',4);
+
+insert into review values(default,2,3,4,5,6,1,1);
+insert into review values(default,3,3,3,3,3,2,2);
+insert into review values(default,4,4,4,4,4,3,3);
+insert into review values(default,5,5,5,5,5,4,4);
+
+
+Trigger to increment student count
+
+
+DELIMITER //  
+Create Trigger course_registration  
+AFTER INSERT ON registration FOR EACH ROW  
+BEGIN  
+update courses set course_student_count=(course_student_count+1) where course_id=new.course1_id;  
+END //
+DELIMITER ;
+  

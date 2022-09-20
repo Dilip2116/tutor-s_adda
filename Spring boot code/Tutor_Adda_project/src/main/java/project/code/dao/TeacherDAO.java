@@ -80,4 +80,9 @@ public class TeacherDAO  {
   return null;
 	}
 
+	public int getcount() {
+		int n = teacherRepository.teachercount();
+		return n;
+	}
+
 }

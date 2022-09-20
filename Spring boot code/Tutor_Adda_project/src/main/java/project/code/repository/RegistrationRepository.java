@@ -2,22 +2,19 @@ package project.code.repository;
 
 
 
-
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import project.code.entity.Courses;
+import project.code.entity.CompositeRegister;
+import project.code.entity.Registration;
+
 
 
 @Repository
-public interface CoursesRepository extends JpaRepository<Courses, Integer> {
-	
-	@Query(value="select count(course_id) from courses;",nativeQuery=true)
-	public int coursecount();
+public interface RegistrationRepository extends JpaRepository<Registration, CompositeRegister> {
 }
+
 

@@ -42,4 +42,9 @@ public class ReviewDAO {
 			return  review;
 		}
 
+		public int getcount(int id) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
 }
