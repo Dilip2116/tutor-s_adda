@@ -3,11 +3,11 @@ first command :--
 
 	npm install 
 
+
+if some dependecies not found or gives error while running projects ...
+---------------------------------------------------------------
+
 dependencies to run projects:--
-
-/* ----for schedular---*/
-
-npm install @mobiscroll/calendar-integration
 
 
 /* ----for routing---*/
@@ -33,3 +33,11 @@ npm install react-social-icons
 /*----- for redux storage -----
 
 npm install react-redux --save
+
+/*----- for react icons
+
+npm install react-icons --save
+
+/*--- for react calendar 
+
+npm install react-calendar

@@ -65,6 +65,11 @@ public class StudentDAO {
 			return courses;
 		}
 
+
+public Student get(int id) {
+		return (studentRepository.findById(id).get());
+	}
+
 		
 	
 }

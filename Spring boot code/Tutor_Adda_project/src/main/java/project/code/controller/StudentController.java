@@ -92,5 +92,15 @@ public List<Integer> coursesbystudentid(@PathVariable int id)
 	courses =dao.coursesbystudentid(id);
 	return courses;
 }
+@GetMapping("/getstudent/{id}")
+public Student getstudent (@PathVariable int id) 
+{
+	Student student = new Student();
+	student=this.dao.get(id);
+
+
+	return student;
+}
+
 	
 }
