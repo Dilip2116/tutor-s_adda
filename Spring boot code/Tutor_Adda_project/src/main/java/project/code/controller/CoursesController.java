@@ -23,7 +23,6 @@ import project.code.dao.CourseDAO;
 import project.code.entity.Courses;
 
 
-
 @CrossOrigin(origins ="http://localhost:3000" )
 @RestController
 public class CoursesController {
@@ -31,9 +30,8 @@ public class CoursesController {
 	@Autowired
 	CourseDAO dao;
 
-	@GetMapping("/getcourse")
-
-	public List<Courses> getcourses()  //Get all courses
+	@GetMapping("/getcourse")           //Get all available courses
+	public List<Courses> getcourses()  
 	{
 		List<Courses> Lcourse ;
 
@@ -41,14 +39,19 @@ public class CoursesController {
 		return Lcourse;
 	}
 
-	@GetMapping("/getcourse/{id}")
+	
+	
+	@GetMapping("/getcourse/{id}")    //Get all available courses by course id
 	public Courses getteacher (@PathVariable int id) 
 	{
 		Courses course = new Courses();
 		course=dao.get(id);
 		return course; 
 	}
-	@GetMapping("/getcoursebyteacher/{id}")
+	
+	
+	
+	@GetMapping("/getcoursebyteacher/{id}")  //Get all courses of particular teacher by teacher_id
 
 	public List<Courses> getByTeacherId(@PathVariable int id)  //Get by teachers
 	{
@@ -57,55 +60,18 @@ public class CoursesController {
 		Lcourse=dao.getByTeacherId(id);
 		return Lcourse;
 	}
+	
 
-	//*******************************************************************************
-
-	@DeleteMapping("/deletecourse/{id}")
-	public void deletecourse(@PathVariable int id)
-	{
-		dao.deletecourse(id);
-	}
-
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	@PostMapping("/addcourse")        //Add new 
-	public Courses addcourse(@RequestBody Courses course)
-	{
-		dao.addcourse(course);
-		return course;
-	}
-
-	@PostMapping("/addnewcourse")        //Add new course
-	public Courses addnewcourse(@RequestBody Courses course)
-	{
-		dao.addcourse(course);
-		return course;
-	}
-
-	@PostMapping("/updatecourse")   //update course
-	public Courses updatecourse(@RequestBody Courses c)
-	{
-		Courses course = new Courses();
-		course =dao.updatecourse(c);
-		return course;
-	}
-
-	@PostMapping("/updatecoursefee/{id}/{fee}")   //update fee
-	public Courses updatecoursefee(@PathVariable int id,@PathVariable int fee)
-	{
-		Courses  course =dao.updatecoursefee(id,fee);
-		return course;
-
-	}
-
-	@GetMapping("/coursecount")
+	@GetMapping("/coursecount")  //get the total count of all courses
 	public int coursecount()
 	{
 		int n=dao.getcount();
 		return n;
 	}
 
-	@GetMapping("/getcoursebydate/{date}/{tid}")
+	
+	
+	@GetMapping("/getcoursebydate/{date}/{tid}")     //get course of particular teacher for a date
 	public List<Courses>  getcoursebydate (@PathVariable String date,@PathVariable int tid) 
 	{
 		List<Courses> lcourse ;
@@ -113,16 +79,65 @@ public class CoursesController {
 		return lcourse;
 	}
 
+	
 
-	@GetMapping("/getcoursebystudentdate/{date}/{sid}") //need to check
+	@GetMapping("/getcoursebystudentdate/{date}/{sid}")  //get course of particular student for a date
 	public List<Courses>  getcoursebydatestudent (@PathVariable String date,@PathVariable int sid) 
 	{
 		List<Courses> lcourse ;
 		lcourse=dao.coursebydateforstudent(date ,sid);
 		return lcourse;
 	}
+	
+	
+	//*******************************************************************************
 
-	@PostMapping("/varifynewcourse")
+	@DeleteMapping("/deletecourse/{id}")  //delete course by it's id
+	public void deletecourse(@PathVariable int id)
+	{
+		dao.deletecourse(id);
+	}
+
+	
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@PostMapping("/addcourse")       
+	public Courses addcourse(@RequestBody Courses course)   //Add new course
+	{
+		dao.addcourse(course);
+		return course;
+	}
+
+	
+	
+	@PostMapping("/addnewcourse")        //Add new course
+	public Courses addnewcourse(@RequestBody Courses course)
+	{
+		dao.addcourse(course);
+		return course;
+	}
+
+	
+	
+	@PostMapping("/updatecourse")   //update course   //update course details
+	public Courses updatecourse(@RequestBody Courses c)
+	{
+		Courses course = new Courses();
+		course =dao.updatecourse(c);
+		return course;
+	}
+
+	@PostMapping("/updatecoursefee/{id}/{fee}")   //update course fee
+	public Courses updatecoursefee(@PathVariable int id,@PathVariable int fee)
+	{
+		Courses  course =dao.updatecoursefee(id,fee);
+		return course;
+	}
+
+	
+
+	@PostMapping("/varifynewcourse")   //Add new course by checking availability of time slot
 	public boolean  varifynewaddedcourse (@RequestBody Courses course) 
 	{
 		Date startdate=course.getCourse_start_date();
@@ -130,23 +145,26 @@ public class CoursesController {
 		String starttime=course.getCourse_start_time().toString();
 		String endtime=course.getCourse_end_time().toString();
 		int tid = course.getCourse_teacher_id();
-		
+
 		boolean addcourse = dao.verifynewcourse(startdate,enddate,starttime,endtime,tid);
-if(addcourse)
-{
-	dao.addcourse(course);
-	return addcourse;
-}
-else 
-	return addcourse;
-	
+		if(addcourse)
+		{
+			dao.addcourse(course);
+			return addcourse;
+		}
+		else 
+			return addcourse;
 	}
+
 	
-	@GetMapping("/upcommingcourse/{tid}") 
+	
+	@GetMapping("/upcommingcourse/{tid}") //return upcoming course of particular teacher
 	public Courses  teacherupcommingcourse (@PathVariable int tid) 
 	{
 		Courses course ;
 		course=dao.teacherupcommingcourse(tid);
 		return course;
 	}
+	
+	
 }
