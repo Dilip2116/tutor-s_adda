@@ -62,4 +62,20 @@ public class ReviewDAO {
 			int n =reviewRepository.getreviews3(id);
 			return review;
 		}
+		
+		public Boolean addrenewview(Review review ) {
+List<Review> lr;
+lr=reviewRepository.addnewreview(review.getStudent_id(),review.getCourse_id());
+if (lr.isEmpty())
+{
+	reviewRepository.save(review);
+	return true;
+}
+else
+	return false;
+			
+			
+		}
+
+		
 }

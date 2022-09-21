@@ -2,6 +2,7 @@ package project.code.dao;
 
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -114,6 +115,12 @@ public class CourseDAO  {
 		course=coursesRepository.upcomming_course_teahcer(tid);
 		
 		return course;
+	}
+
+	public List<Courses> coursesbystudentid(int id) {
+		List<Courses>courses = new ArrayList<Courses>();
+		courses =coursesRepository.getcoursebystudentid(id);
+		return courses;
 	}
 
 }

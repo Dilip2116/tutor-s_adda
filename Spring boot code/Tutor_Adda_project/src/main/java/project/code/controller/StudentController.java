@@ -85,13 +85,13 @@ public int studentcount()
 	int n=dao.getcount();
 	return n;
 }
-
-@GetMapping("/coursesbystudentid/{id}")
-public List<Courses> coursesbystudentid(@PathVariable int id)
-{
-	List<Courses> courses;
-	courses =dao.coursesbystudentid(id);
-	return courses;
-}
+//
+//@GetMapping("/coursesbystudentid/{id}")
+//public List<Courses> coursesbystudentid(@PathVariable int id)
+//{
+//	List<Courses>courses = new ArrayList<Courses>();
+//	courses =dao.coursesbystudentid(id);
+//	return courses;
+//}
 	
 }

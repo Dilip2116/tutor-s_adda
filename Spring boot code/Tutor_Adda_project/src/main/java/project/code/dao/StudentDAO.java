@@ -1,5 +1,6 @@
 package project.code.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,12 +60,12 @@ public class StudentDAO {
 			return n ;
 		}
 
-
-		public List<Courses> coursesbystudentid(int id) {
-			List<Courses>  courses;
-			courses = studentRepository.getcoursebystudentid(id);
-			return courses;
-		}
+//
+//		public List<Courses> coursesbystudentid(int id) {
+//			List<Courses>courses = new ArrayList<Courses>();
+//			courses = studentRepository.getcoursebystudentid(id);
+//			return courses;
+//		}
 
 		
 	

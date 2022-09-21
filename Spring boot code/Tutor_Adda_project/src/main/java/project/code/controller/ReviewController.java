@@ -27,12 +27,12 @@ public class ReviewController {
 	@Autowired
 	ReviewDAO dao;
 	
-	@PostMapping("/addreview")
-	public Review addreview(@RequestBody Review review)
-	{
-		this.dao.addreview(review);
-		return review;
-	}
+//	@PostMapping("/addreview")
+//	public Review addreview(@RequestBody Review review)
+//	{
+//		this.dao.addreview(review);
+//		return review;
+//	}
 	
 	
     @GetMapping("/getreview")
@@ -66,6 +66,13 @@ public int teacherreview(@PathVariable int id)
 {
 	int rating =dao.teacherreview1(id);
 	return rating;
+}
+
+@PostMapping("/addreview")
+public boolean addreview(@RequestBody Review review)
+{
+	boolean bool=dao.addrenewview(review);
+	return bool;
 }
 
 

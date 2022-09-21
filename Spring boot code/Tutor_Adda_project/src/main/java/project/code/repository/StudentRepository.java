@@ -18,6 +18,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 	@Query(value="select count(student_id) from student;",nativeQuery=true)
 	public int studentcount();
 	
-	@Query(value="select * from courses where course_id in(select course1_id from registration where student1_id=:sid);",nativeQuery=true)
-	public List<Courses> getcoursebystudentid(@PathVariable("sid") int sid);
+//	@Query(value="select * from courses where course_id in(select course1_id from registration where student1_id=:sid );",nativeQuery=true)
+//	public List<Courses> getcoursebystudentid(@PathVariable("sid") int sid);
 }
