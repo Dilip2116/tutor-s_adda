@@ -109,4 +109,11 @@ public class CourseDAO  {
 		
 	}
 
+	public Courses teacherupcommingcourse(int tid) {
+		Courses course;
+		course=coursesRepository.upcomming_course_teahcer(tid);
+		
+		return course;
+	}
+
 }

@@ -17,7 +17,7 @@ import project.code.dao.ReviewDAO;
 import project.code.entity.Review;
 import project.code.repository.ReviewRepository;
 
-@CrossOrigin
+
 @RestController
 public class ReviewController {
 	

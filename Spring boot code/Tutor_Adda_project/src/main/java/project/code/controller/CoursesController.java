@@ -28,11 +28,8 @@ import project.code.entity.Courses;
 @RestController
 public class CoursesController {
 
-
 	@Autowired
 	CourseDAO dao;
-
-
 
 	@GetMapping("/getcourse")
 
@@ -130,14 +127,10 @@ public class CoursesController {
 	{
 		Date startdate=course.getCourse_start_date();
 		Date enddate=course.getCourse_end_date();
-//		String starttime=course.getCourse_start_time().toString();
-//		String endtime=course.getCourse_end_time().toString();
+		String starttime=course.getCourse_start_time().toString();
+		String endtime=course.getCourse_end_time().toString();
 		int tid = course.getCourse_teacher_id();
 		
-		String starttime="05:30";
-		String endtime="06:00";
-
-
 		boolean addcourse = dao.verifynewcourse(startdate,enddate,starttime,endtime,tid);
 if(addcourse)
 {
@@ -146,7 +139,14 @@ if(addcourse)
 }
 else 
 	return addcourse;
-		
+	
 	}
-
+	
+	@GetMapping("/upcommingcourse/{tid}") 
+	public Courses  teacherupcommingcourse (@PathVariable int tid) 
+	{
+		Courses course ;
+		course=dao.teacherupcommingcourse(tid);
+		return course;
+	}
 }
