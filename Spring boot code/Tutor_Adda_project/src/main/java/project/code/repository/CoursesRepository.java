@@ -3,6 +3,8 @@ package project.code.repository;
 
 
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,5 +30,9 @@ public interface CoursesRepository extends JpaRepository<Courses, Integer> {
 	public List<Courses> coursebydatestudent(@PathVariable("date") String date ,@PathVariable("sid") int sid);
 
 	
-}
 
+	@Query(value="select * from courses where course_teacher_id=:tid and ((:startdate between course_start_date and course_end_date) or (:enddate between course_start_date and course_end_date)) and ((:starttime between course_start_time and course_end_time) or( :endtime between course_start_time and course_end_time)) ;",nativeQuery=true)
+	public List<Courses> verifynewcourse(@PathVariable("startdate") Date startdate,@PathVariable("enddate") Date enddate ,@PathVariable("starttime") String starttime,@PathVariable("endtime") String endtime,@PathVariable("tid") int tid);
+	
+
+}

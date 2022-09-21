@@ -1,6 +1,8 @@
 package project.code.dao;
 
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -92,6 +94,19 @@ public class CourseDAO  {
 
 		lcourse=coursesRepository.coursebydatestudent(date ,sid);
 		return lcourse;
+	}
+	
+	public boolean verifynewcourse(Date startdate,Date enddate,String starttime,String endtime ,int tid) {
+		
+		List<Courses> lcourse ;
+
+		lcourse=coursesRepository.verifynewcourse(startdate,enddate,starttime,endtime ,tid);
+
+		if(lcourse.isEmpty())
+			{return true;}
+		else
+			return false;
+		
 	}
 
 }

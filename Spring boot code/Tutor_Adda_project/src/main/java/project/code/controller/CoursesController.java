@@ -1,5 +1,7 @@
 package project.code.controller;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ import project.code.dao.CourseDAO;
 import project.code.entity.Courses;
 
 
-	
+
 @CrossOrigin(origins ="http://localhost:3000" )
 @RestController
 public class CoursesController {
@@ -29,19 +31,19 @@ public class CoursesController {
 
 	@Autowired
 	CourseDAO dao;
-	
 
-	
+
+
 	@GetMapping("/getcourse")
-	
+
 	public List<Courses> getcourses()  //Get all courses
 	{
 		List<Courses> Lcourse ;
-	
+
 		Lcourse=this.dao.getAll();
 		return Lcourse;
 	}
-	
+
 	@GetMapping("/getcourse/{id}")
 	public Courses getteacher (@PathVariable int id) 
 	{
@@ -49,55 +51,55 @@ public class CoursesController {
 		course=dao.get(id);
 		return course; 
 	}
-@GetMapping("/getcoursebyteacher/{id}")
-	
+	@GetMapping("/getcoursebyteacher/{id}")
+
 	public List<Courses> getByTeacherId(@PathVariable int id)  //Get by teachers
 	{
 		List<Courses> Lcourse ;
-	
+
 		Lcourse=dao.getByTeacherId(id);
 		return Lcourse;
 	}
-	
-//*******************************************************************************
+
+	//*******************************************************************************
 
 	@DeleteMapping("/deletecourse/{id}")
 	public void deletecourse(@PathVariable int id)
 	{
 		dao.deletecourse(id);
 	}
-	
+
 	@JsonDeserialize(using = LocalDateDeserializer.class)
-	  @JsonSerialize(using = LocalDateSerializer.class)
-	@PostMapping("/addcourse")        //Add new teacher
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@PostMapping("/addcourse")        //Add new 
 	public Courses addcourse(@RequestBody Courses course)
 	{
 		dao.addcourse(course);
 		return course;
 	}
-		
+
 	@PostMapping("/addnewcourse")        //Add new course
 	public Courses addnewcourse(@RequestBody Courses course)
 	{
 		dao.addcourse(course);
 		return course;
 	}
-	
-    @PostMapping("/updatecourse")   //update course
+
+	@PostMapping("/updatecourse")   //update course
 	public Courses updatecourse(@RequestBody Courses c)
 	{
-    	Courses course = new Courses();
-    	course =dao.updatecourse(c);
-    	return course;
+		Courses course = new Courses();
+		course =dao.updatecourse(c);
+		return course;
 	}
 
-    @PostMapping("/updatecoursefee/{id}/{fee}")   //update fee
-   	public Courses updatecoursefee(@PathVariable int id,@PathVariable int fee)
-   	{
-      Courses  course =dao.updatecoursefee(id,fee);
-       return course;
-     
-   	}
+	@PostMapping("/updatecoursefee/{id}/{fee}")   //update fee
+	public Courses updatecoursefee(@PathVariable int id,@PathVariable int fee)
+	{
+		Courses  course =dao.updatecoursefee(id,fee);
+		return course;
+
+	}
 
 	@GetMapping("/coursecount")
 	public int coursecount()
@@ -105,22 +107,46 @@ public class CoursesController {
 		int n=dao.getcount();
 		return n;
 	}
-    
-@GetMapping("/getcoursebydate/{date}/{tid}")
+
+	@GetMapping("/getcoursebydate/{date}/{tid}")
 	public List<Courses>  getcoursebydate (@PathVariable String date,@PathVariable int tid) 
 	{
-	List<Courses> lcourse ;
-	lcourse=dao.coursebydate(date ,tid);
-	return lcourse;
-}
+		List<Courses> lcourse ;
+		lcourse=dao.coursebydate(date ,tid);
+		return lcourse;
+	}
 
 
-@GetMapping("/getcoursebystudentdate/{date}/{sid}")
-public List<Courses>  getcoursebydatestudent (@PathVariable String date,@PathVariable int sid) 
+	@GetMapping("/getcoursebystudentdate/{date}/{sid}") //need to check
+	public List<Courses>  getcoursebydatestudent (@PathVariable String date,@PathVariable int sid) 
+	{
+		List<Courses> lcourse ;
+		lcourse=dao.coursebydateforstudent(date ,sid);
+		return lcourse;
+	}
+
+	@PostMapping("/varifynewcourse")
+	public boolean  varifynewaddedcourse (@RequestBody Courses course) 
+	{
+		Date startdate=course.getCourse_start_date();
+		Date enddate=course.getCourse_end_date();
+//		String starttime=course.getCourse_start_time().toString();
+//		String endtime=course.getCourse_end_time().toString();
+		int tid = course.getCourse_teacher_id();
+		
+		String starttime="05:30";
+		String endtime="06:00";
+
+
+		boolean addcourse = dao.verifynewcourse(startdate,enddate,starttime,endtime,tid);
+if(addcourse)
 {
-List<Courses> lcourse ;
-lcourse=dao.coursebydateforstudent(date ,sid);
-return lcourse;
+	dao.addcourse(course);
+	return addcourse;
 }
+else 
+	return addcourse;
+		
+	}
 
 }
