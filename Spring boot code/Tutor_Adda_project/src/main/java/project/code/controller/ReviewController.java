@@ -67,4 +67,6 @@ public int teacherreview(@PathVariable int id)
 	int rating =dao.teacherreview1(id);
 	return rating;
 }
+
+
 }

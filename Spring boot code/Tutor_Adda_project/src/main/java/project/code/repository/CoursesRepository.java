@@ -24,6 +24,9 @@ public interface CoursesRepository extends JpaRepository<Courses, Integer> {
 	@Query(value="select * from courses where course_teacher_id=:tid and :date between course_start_date and course_end_date;",nativeQuery=true)
 	public List<Courses> coursebydate(@PathVariable("date") String date ,@PathVariable("tid") int tid);
 
+	@Query(value=" select * from courses where course_id in (select course1_id from registration where student1_id=:sid ) and :date between course_start_date and course_end_date ;",nativeQuery=true)
+	public List<Courses> coursebydatestudent(@PathVariable("date") String date ,@PathVariable("sid") int sid);
+
 	
 }
 
