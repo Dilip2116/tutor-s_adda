@@ -10,17 +10,17 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 @SpringBootApplication
 public class TutorAddaApplication {
 
-	 @Autowired
-	  private ObjectMapper objectMapper;
+	@Autowired
+	private ObjectMapper objectMapper;
 
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(TutorAddaApplication.class, args);
 	}
-	
-	  @PostConstruct
-	  public void setUp() {
-	    objectMapper.registerModule(new JavaTimeModule());
-	  }
+
+	@PostConstruct
+	public void setUp() {
+		objectMapper.registerModule(new JavaTimeModule());
+	}
 
 }

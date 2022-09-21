@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import project.code.dao.StudentDAO;
+import project.code.entity.Courses;
 import project.code.entity.Student;
 import project.code.entity.Teacher;
 
@@ -86,21 +87,11 @@ public int studentcount()
 }
 
 @GetMapping("/coursesbystudentid/{id}")
-public List<Integer> coursesbystudentid(@PathVariable int id)
+public List<Courses> coursesbystudentid(@PathVariable int id)
 {
-	List<Integer> courses;
+	List<Courses> courses;
 	courses =dao.coursesbystudentid(id);
 	return courses;
 }
-@GetMapping("/getstudent/{id}")
-public Student getstudent (@PathVariable int id) 
-{
-	Student student = new Student();
-	student=this.dao.get(id);
-
-
-	return student;
-}
-
 	
 }

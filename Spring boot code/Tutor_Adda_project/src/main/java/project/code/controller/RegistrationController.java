@@ -41,20 +41,13 @@ public class RegistrationController {
 
 	@Autowired
 	RegistrationRepository registrationrepository;
-	
+
 	@Autowired
 	RegistrationDAO dao;
 
-//	@PostMapping("/register")
-//	public Registration addstudent(@RequestBody Registration regi)
-//	{
-//		Registration r =new Registration();
-//		r = dao.newregistration(regi);
-//		return r;
-//	}
 
-	@GetMapping("/getregister")
-	public List<Registration> getall()
+	@GetMapping("/getregister") //THis will give list of object with student id and theire joined course id
+	public List<Registration> getall() 
 	{
 		List<Registration> obj = registrationrepository.findAll();
 		return obj;

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.code.entity.Courses;
 import project.code.entity.Student;
 import project.code.entity.Teacher;
 import project.code.repository.StudentRepository;
@@ -59,16 +60,11 @@ public class StudentDAO {
 		}
 
 
-		public List<Integer> coursesbystudentid(int id) {
-			List<Integer>  courses;
+		public List<Courses> coursesbystudentid(int id) {
+			List<Courses>  courses;
 			courses = studentRepository.getcoursebystudentid(id);
 			return courses;
 		}
-
-
-public Student get(int id) {
-		return (studentRepository.findById(id).get());
-	}
 
 		
 	
