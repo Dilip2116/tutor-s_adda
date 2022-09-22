@@ -41,3 +41,8 @@ npm install react-icons --save
 /*--- for react calendar 
 
 npm install react-calendar
+
+
+/*-----
+
+npm install react-hook-form
