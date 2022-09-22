@@ -22,8 +22,13 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	
 	@Query(value="select avg(third_rating) from review where courseid=:id",nativeQuery=true)
 	public int getreviews3(@PathVariable("id") int id);
+	
 	@Query(value="select avg(fourth_rating) from review where courseid=:id",nativeQuery=true)
 	public int getreviews4(@PathVariable("id") int id);
+	
 	@Query(value="select avg(fifth_rating) from review where courseid=:id",nativeQuery=true)
 	public int getreviews5(@PathVariable("id") int id);
+	
+	@Query(value="select * from review where studentid=:sid and courseid=:cid",nativeQuery=true)
+	public List<Review> addnewreview(@PathVariable ("sid") int sid,@PathVariable("cid") int cid);
 }
