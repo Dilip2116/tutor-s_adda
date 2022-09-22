@@ -36,4 +36,7 @@ public interface CoursesRepository extends JpaRepository<Courses, Integer> {
 
 	@Query(value="select * from courses where course_teacher_id=:tid and curdate() between course_start_date and course_end_date and curtime() < course_start_time order by course_start_time limit 1;",nativeQuery=true)
 	public Courses upcomming_course_teahcer(@PathVariable("tid") int tid);
+	
+	@Query(value="select * from courses where course_id in(select course1_id from registration where student1_id=:sid );",nativeQuery=true)
+	public List<Courses> getcoursebystudentid(@PathVariable("sid") int sid);
 }

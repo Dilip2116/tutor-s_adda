@@ -1,5 +1,6 @@
 package project.code.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,58 +15,87 @@ import project.code.repository.StudentRepository;
 @Service
 public class StudentDAO {
 
-	
+
 	@Autowired
 	StudentRepository studentRepository;
-	
+
+	//delete student by student id
 	public void deletestudent(int id) {
 		studentRepository.deleteById(id);
 	}
-	
-	
+
+	//get list of all registered students
 	public List<Student> getAll() {
 		List<Student> tlist;
 		tlist=studentRepository.findAll();
 		return tlist;
 	}
-	
-	
+
+
 
 	//to add new STUDENT
-		public Student addstudent(Student student ) {
+	public Student addstudent(Student student ) {
 
-			studentRepository.save(student);
-			return  student;
-		}
+		studentRepository.save(student);
+		return  student;
+	}
 
 
-		public Student varifystudent(String uname, String pass) {
-			List<Student> tlist;
-			
-			tlist=studentRepository.findAll();
-			for(Student t : tlist)
+	public Student varifystudent(String uname, String pass) {
+		List<Student> tlist;
+
+		tlist=studentRepository.findAll();
+		for(Student t : tlist)
+		{
+			if(t.getStudent_password().equals(pass) && t.getStudent_username().equals(uname))
 			{
-				if(t.getStudent_password().equals(pass) && t.getStudent_username().equals(uname))
-				{
-					return t;
-				}
+				return t;
 			}
-	  return null;
 		}
+		return null;
+	}
 
 
-		public int getcount() {
-			int n =studentRepository.studentcount();
-			return n ;
-		}
+	public int getcount() {
+		int n =studentRepository.studentcount();
+		return n ;
+	}
+
+	//
+	//		public List<Courses> coursesbystudentid(int id) {
+	//			List<Courses>courses = new ArrayList<Courses>();
+	//			courses = studentRepository.getcoursebystudentid(id);
+	//			return courses;
+	//		}
+
+	public Student updatestudent(Student student)
+	{
+		Student updateStudent = studentRepository.findById(student.getStudentId()).get();
 
 
-		public List<Courses> coursesbystudentid(int id) {
-			List<Courses>  courses;
-			courses = studentRepository.getcoursebystudentid(id);
-			return courses;
-		}
 
-		
-	
+		updateStudent.setAddress(student.getAddress());
+		updateStudent.setStudent_fname(student.getStudent_fname());
+		updateStudent.setStudent_lname(student.getStudent_lname());
+		updateStudent.setStudent_mobile(student.getStudent_mobile());
+		updateStudent.setStudent_gender(student.getStudent_gender());
+		updateStudent.setStudent_username(student.getStudent_username());
+		updateStudent.setStudent_dob(student.getStudent_dob());
+		updateStudent.setStudent_password(student.getStudent_password());
+		updateStudent.setStudent_email(student.getStudent_email());
+
+		studentRepository.save(updateStudent);
+		return updateStudent;
+
+	}
+
+	public Student getstudentbyid(int sid) 
+	{
+		Student stud =studentRepository.findById(sid).get();
+		return stud;
+	}
+
+
+
+
 }

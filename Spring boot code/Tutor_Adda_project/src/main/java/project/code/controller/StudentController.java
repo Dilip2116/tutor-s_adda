@@ -84,5 +84,19 @@ public class StudentController {
 		return student;
 	}
 
+	@PostMapping("/updatestudent")   //update student details
+	public Student updateTeacher(@RequestBody Student student)
+	{
+		Student s = new Student();
+		s =dao.updatestudent(student);
+		return s;
+	}
 
+	@GetMapping("/studentbyid/{sid}")
+	public Student studentbyid(@PathVariable int sid)
+	{
+		Student stud = new Student();
+		stud = dao.getstudentbyid(sid);
+		return stud;
+		}
 }

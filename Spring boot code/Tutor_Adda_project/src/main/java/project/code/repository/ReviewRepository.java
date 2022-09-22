@@ -14,8 +14,8 @@ import project.code.entity.Review;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	
-	@Query(value="select avg(first_rating) from review where courseid in(select course_id from courses where teacher_id=:id ); ",nativeQuery=true)
-	public int teacherreview(@PathVariable("id") int id);
+	@Query(value="select avg(first_rating) from review where courseid in(select course_id from courses where course_teacher_id=:id ); ",nativeQuery=true)
+	public List<Integer> teacherreview(@PathVariable("id") int id);
 	
 	@Query(value="select avg(second_rating) from review where courseid=:id",nativeQuery=true)
 	public int getreviews2(@PathVariable("id") int id);

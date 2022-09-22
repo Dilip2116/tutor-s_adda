@@ -1,6 +1,7 @@
 package project.code.controller;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -166,5 +167,12 @@ public class CoursesController {
 		return course;
 	}
 	
-	
+
+@GetMapping("/coursesbystudentid/{id}")
+public List<Courses> coursesbystudentid(@PathVariable int id)
+{
+	List<Courses>courses = new ArrayList<Courses>();
+	courses =dao.coursesbystudentid(id);
+	return courses;
+}
 }

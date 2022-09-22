@@ -49,8 +49,14 @@ public class ReviewDAO {
 // get review of particular teacher
 	public int teacherreview1(int id)
 	{
-		int n = reviewRepository.teacherreview(id);
-		return n;
+		List<Integer> rn = new ArrayList<Integer>(); 
+		rn= reviewRepository.teacherreview(id);
+		if (rn.get(0)==null)
+		{
+			return 0;
+		}
+		else
+		return rn.get(0);
 	}
 	
 	//get review of particular courses
