@@ -26,8 +26,8 @@ public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 	public int teachercount();
 	
 	
-	@Query(value="select * from teacher where teacher.teacher_id=:id;",nativeQuery=true)
-	public Teacher findteach(@PathVariable("id") int id);
+//	@Query(value="select * from teacher where teacher.teacher_id=:teacher_id;",nativeQuery=true)
+//	public Teacher findteach(@PathVariable("teacher_id") int teacher_id);
 
 
 

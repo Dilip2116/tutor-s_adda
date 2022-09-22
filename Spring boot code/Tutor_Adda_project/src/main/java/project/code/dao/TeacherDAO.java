@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import project.code.entity.Teacher;
@@ -41,19 +43,30 @@ public class TeacherDAO  {
 		teacherRepository.deleteById(id);
 	}
 
-	public Teacher updateteacher(Teacher teacher)
+	public boolean updateteacher(Teacher teacher)
 	{
-//	Teacher updateTeacher = teacherRepository.findById(teacher.getTeacherId()).get();
+	Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
 		
 		
-		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
+//		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
 		
-	
+		System.out.print(teacher.getTeacher_about());
+		System.out.print(teacher.getTeacher_email());
+		System.out.print(teacher.getTeacher_id());
+		System.out.print(teacher.getTeacher_experience());
+		System.out.print(teacher.getTeacher_fname());
+		System.out.print(teacher.getTeacher_gender());
+		System.out.print(teacher.getTeacher_lname());
+		System.out.print(teacher.getTeacher_mobile());
+		System.out.print(teacher.getTeacher_password());
+		System.out.print(teacher.getTeacher_qualification());
+		System.out.print(teacher.getTeacher_username());
+		System.out.print(teacher.getAddress());
 		
-		
-		if(updateTeacher!=null)
+		if(updateT.isPresent())
 		{
 		
+			Teacher updateTeacher=updateT.get();
 		
 		
 		updateTeacher.setTeacher_fname(teacher.getTeacher_fname());
@@ -69,10 +82,12 @@ public class TeacherDAO  {
 		updateTeacher.setAddress(teacher.getAddress());
 
 		teacherRepository.save(updateTeacher);
-		
+		return true;
 		
 		}
-		return updateTeacher;
+		return false;
+		
+		
 	
 	}
 

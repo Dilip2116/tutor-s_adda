@@ -80,10 +80,10 @@ public class TeacherController {
 	}
 
 	@PostMapping("/updateteacher")   //update teacher details
-	public Teacher updateTeacher(@RequestBody Teacher teacher)
+	public boolean updateTeacher(@RequestBody Teacher teacher)
 	{
-		Teacher t = new Teacher();
-		t =dao.updateteacher(teacher);
+		
+	boolean t =dao.updateteacher(teacher);
 		return t;
 	}
 
