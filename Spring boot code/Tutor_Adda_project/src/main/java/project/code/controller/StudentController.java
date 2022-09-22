@@ -38,60 +38,51 @@ import project.code.entity.Teacher;
 @RestController
 public class StudentController {
 
-	
+
 	@Autowired
 	StudentDAO dao;
 	
-	@PostMapping("/addstudent")
+
+	@GetMapping("/studentcount")  //get the total number of students in system
+	public int studentcount()
+	{
+		int n=dao.getcount();
+		return n;
+	}
+
+	
+	@GetMapping("/getstudent")  //get all registered students
+	public List<Student> getstudent()
+	{
+		List<Student> LStudent;
+
+		LStudent=dao.getAll();
+		return LStudent;
+	}
+
+	
+	@DeleteMapping("/deletestudent/{id}")  //delete review by student id
+	public void deletestudent(@PathVariable int id)
+	{
+		dao.deletestudent(id);
+	}
+
+	
+	@PostMapping("/studentlogin/{uname}/{pass}") //login details verification
+	public Student getteacher (@PathVariable String uname,@PathVariable String pass) 
+	{
+		Student student=dao.varifystudent(uname,pass);
+		System.out.println(student.getStudent_lname());
+		return student;
+	}
+
+	
+	@PostMapping("/addstudent") //add new student into database
 	public Student addstudent(@RequestBody Student student)
 	{
 		this.dao.addstudent(student);
 		return student;
 	}
-	
-	
-    @GetMapping("/getstudent")
-	public List<Student> getstudent()
-	{
-		List<Student> LStudent;
-	
-	    LStudent=dao.getAll();
-		return LStudent;
-
-	}
-    
-    @DeleteMapping("/deletestudent/{id}")
-	public void deletestudent(@PathVariable int id)
-	{
-		dao.deletestudent(id);
-	}
-    
-    @PostMapping("/studentlogin/{uname}/{pass}")
-	public Student getteacher (@PathVariable String uname,@PathVariable String pass) 
-	{
-		//Teacher teacher = new Teacher();
-    	Student student=dao.varifystudent(uname,pass);
-    	
-    	System.out.println(student.getStudent_lname());
-	
-
-		return student;
-	}
 
 
-@GetMapping("/studentcount")
-public int studentcount()
-{
-	int n=dao.getcount();
-	return n;
-}
-
-@GetMapping("/coursesbystudentid/{id}")
-public List<Courses> coursesbystudentid(@PathVariable int id)
-{
-	List<Courses> courses;
-	courses =dao.coursesbystudentid(id);
-	return courses;
-}
-	
 }
