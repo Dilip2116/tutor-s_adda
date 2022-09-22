@@ -19,11 +19,12 @@ public class StudentDAO {
 	@Autowired
 	StudentRepository studentRepository;
 	
+	//delete student by student id
 	public void deletestudent(int id) {
 		studentRepository.deleteById(id);
 	}
 	
-	
+	//get list of all registered students
 	public List<Student> getAll() {
 		List<Student> tlist;
 		tlist=studentRepository.findAll();

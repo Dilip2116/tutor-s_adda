@@ -20,60 +20,52 @@ import project.code.repository.ReviewRepository;
 
 @RestController
 public class ReviewController {
-	
-	
-	
-	
+
+
+
+
 	@Autowired
 	ReviewDAO dao;
-	
-//	@PostMapping("/addreview")
-//	public Review addreview(@RequestBody Review review)
-//	{
-//		this.dao.addreview(review);
-//		return review;
-//	}
-	
-	
-    @GetMapping("/getreview")
+
+	@GetMapping("/getreview") //get all reviews
 	public List<Review> getreview()
 	{
 		List<Review> LReview;
-	
+
 		LReview=dao.getAll();
 		return LReview;
-
 	}
-    
-    
-    @DeleteMapping("/deletereview/{id}")
+
+
+	@DeleteMapping("/deletereview/{id}") //delete review by id
 	public void deletereview(@PathVariable int id)
 	{
 		dao.deletereview(id);
 	}
+
 	
-@GetMapping("/reviewbycourse/{id}")
-public List<Integer> reviewbycourse(@PathVariable int id)
-{
-	List<Integer> review =new ArrayList<Integer>();
-	review=dao.reviewbycourse(id);
-	return review;
 	
-}
+	@GetMapping("/reviewbycourse/{id}") //get all reviews for particular course
+	public List<Integer> reviewbycourse(@PathVariable int id)
+	{
+		List<Integer> review =new ArrayList<Integer>();
+		review=dao.reviewbycourse(id);
+		return review;
+	}
 
-@GetMapping("/teacherreview/{id}")
-public int teacherreview(@PathVariable int id)
-{
-	int rating =dao.teacherreview1(id);
-	return rating;
-}
+	
+	@GetMapping("/teacherreview/{id}") //get reviews for particular teacher
+	public int teacherreview(@PathVariable int id)
+	{
+		int rating =dao.teacherreview1(id);
+		return rating;
+	}
 
-@PostMapping("/addreview")
-public boolean addreview(@RequestBody Review review)
-{
-	boolean bool=dao.addrenewview(review);
-	return bool;
-}
-
+	@PostMapping("/addreview") //add new reviews 
+	public boolean addreview(@RequestBody Review review)
+	{
+		boolean bool=dao.addrenewview(review);
+		return bool;
+	}
 
 }

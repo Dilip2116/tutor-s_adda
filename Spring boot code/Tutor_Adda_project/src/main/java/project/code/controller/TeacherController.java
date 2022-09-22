@@ -40,14 +40,37 @@ import project.code.response.ResponseMessage;
 @RestController
 public class TeacherController {
 
-	
-	  @Autowired
-	   FileDAO image;
-	  
-	
+
+	@Autowired
+	FileDAO image;
+
+
 	@Autowired
 	TeacherDAO dao;
+
+
 	
+	@GetMapping("/getteacher")  //get all registered teacher
+	public List<Teacher> getteacher()  
+	{
+		List<Teacher> LTeacher;
+		LTeacher=this.dao.getAll();
+		return LTeacher;
+	}
+
+	@GetMapping("/getteacher/{id}") //get registered teacher
+	public Teacher getteacher (@PathVariable int id) 
+	{
+		Teacher teacher = new Teacher();
+		teacher=this.dao.get(id);
+		return teacher;
+	}
+
+	@DeleteMapping("/deleteteacher/{id}") //deleter teacher by teacher_id
+	public void deleteTeacher(@PathVariable int id)
+	{
+		dao.deleteTeacher(id);
+	}
 	
 	@PostMapping("/addteacher")        //Add new teacher
 	public Teacher addteacher( @RequestBody Teacher teacher)
@@ -55,69 +78,43 @@ public class TeacherController {
 		this.dao.addteacher(teacher);
 		return teacher;
 	}
-		
-	@GetMapping("/getteacher")
-	
-	public List<Teacher> getteacher()  //Get all teachers
-	{
-		List<Teacher> LTeacher;
-	
-	    LTeacher=this.dao.getAll();
-		return LTeacher;
-	}
-	
-	@GetMapping("/getteacher/{id}")
-	public Teacher getteacher (@PathVariable int id) 
-	{
-		Teacher teacher = new Teacher();
-		teacher=this.dao.get(id);
-	
-	
-		return teacher;
-	}
-	
-	@DeleteMapping("/deleteteacher/{id}")
-	public void deleteTeacher(@PathVariable int id)
-	{
-		dao.deleteTeacher(id);
-	}
 
-    @PostMapping("/updateteacher")
+	@PostMapping("/updateteacher")   //update teacher details
 	public Teacher updateTeacher(@RequestBody Teacher teacher)
 	{
-    	Teacher t = new Teacher();
-    	t =dao.updateteacher(teacher);
-    	return t;
+		Teacher t = new Teacher();
+		t =dao.updateteacher(teacher);
+		return t;
 	}
-    
-    @PostMapping("/teacherlogin/{uname}/{pass}")
+
+	@PostMapping("/teacherlogin/{uname}/{pass}")  //login verification for teacher
 	public Teacher getteacher (@PathVariable String uname,@PathVariable String pass) 
 	{
 		//Teacher teacher = new Teacher();
-    	Teacher teacher=dao.varifyteacher(uname,pass);
-	
+		Teacher teacher=dao.varifyteacher(uname,pass);
+
 
 		return teacher;
 	}
-    
 
-	@PostMapping("/teacherimage")        //Add new teacher
+
+	@PostMapping("/teacherimage")        //Add image with teacher id
 	public ResponseEntity<ResponseMessage>  addteacher( @RequestBody Teacher teacher,@RequestParam("file") MultipartFile file)
 	{
-				 String message = "";
-		    try {
-		    	this.dao.addteacher(teacher);
-		    	image.store(file);
+		String message = "";
+		try {
+			this.dao.addteacher(teacher);
+			image.store(file);
 
-		      message = "Uploaded the file successfully: " + file.getOriginalFilename();
-		      return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-		    } catch (Exception e) {
-		      message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-		      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-		    }
+			message = "Uploaded the file successfully: " + file.getOriginalFilename();
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		} catch (Exception e) {
+			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		}
 	}
-	
-	@GetMapping("/teachercount")
+
+	@GetMapping("/teachercount")  //get the total number of registered teachers
 	public int teachercount()
 	{
 		int n=dao.getcount();
