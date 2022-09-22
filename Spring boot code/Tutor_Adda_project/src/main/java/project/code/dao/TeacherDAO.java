@@ -43,7 +43,18 @@ public class TeacherDAO  {
 
 	public Teacher updateteacher(Teacher teacher)
 	{
-		Teacher updateTeacher = teacherRepository.findById(teacher.getTeacherId()).get();
+//	Teacher updateTeacher = teacherRepository.findById(teacher.getTeacherId()).get();
+		
+		
+		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
+		
+	
+		
+		
+		if(updateTeacher!=null)
+		{
+		
+		
 		
 		updateTeacher.setTeacher_fname(teacher.getTeacher_fname());
 		updateTeacher.setTeacher_lname(teacher.getTeacher_lname());
@@ -59,7 +70,10 @@ public class TeacherDAO  {
 
 		teacherRepository.save(updateTeacher);
 		
+		
+		}
 		return updateTeacher;
+	
 	}
 
 	

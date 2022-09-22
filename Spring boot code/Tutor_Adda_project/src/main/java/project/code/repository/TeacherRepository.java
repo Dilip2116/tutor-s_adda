@@ -19,11 +19,20 @@ import project.code.entity.Teacher;
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 //	
-//	 @Query("select teacher_fname from teacher  where teacher_id =:id")
-//	 public String findteacher(@Param("id") int id);
-		
+////	 @Query("select teacher_fname from teacher  where teacher_id =:id")
+////	 public String findteacher(@Param("id") int id);
+//		
 	@Query(value="select count(teacher_id) from teacher;",nativeQuery=true)
 	public int teachercount();
+	
+	
+	@Query(value="select * from teacher where teacher.teacher_id=:id;",nativeQuery=true)
+	public Teacher findteach(@PathVariable("id") int id);
+
+
+
+	
+
 	
 }
 
