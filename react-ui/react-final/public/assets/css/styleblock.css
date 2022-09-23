@@ -1,0 +1,37 @@
+body {
+    font-family: Roboto;
+  }
+  
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+   background-color: #4CAF50;
+    color: #F5F5F5;
+  }
+  .mdl-card__media {
+    background-color: #4CAF50;
+  }
+  span.mdl-button__ripple-container  {
+    color: #1A237E;
+  }
+  img {
+    width: 100%;
+  }
+  #bio {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+  .centered {
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+  
+  .social-icons {
+    margin: 0 auto;
+    width: auto;
+  }
+  .social-icons a{
+     color: #FAFAFA;
+  }
+  .button-center {
+   text-align: center;
+  }
