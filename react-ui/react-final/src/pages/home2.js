@@ -1,26 +1,19 @@
 
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom"
-import { SocialIcon } from 'react-social-icons';
-import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
-import Header from "./Header";
+import React from "react";
+import { Link} from "react-router-dom"
 
-import BottomBar from "./BottomBar";
+
 import Gallery from "./gallery";
-import UploadImage from "./UploadImage";
 
 
 
 function Home2() {
 
-   const [stat, setsat] = useState(false)
+   
    return (
 
       <div className="main-layout">
-{/* 
-         <div className="loader_bg">
-            <div className="loader"><img src="../assets/images/loading.gif" alt="#" /></div>
-         </div> */}
+
 
          
 
@@ -59,7 +52,7 @@ function Home2() {
                </div>
             </section>
             <Gallery/>
-            <UploadImage/>
+           
 
             
 
