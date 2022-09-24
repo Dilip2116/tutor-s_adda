@@ -78,11 +78,19 @@ public class StudentController {
 	}
 
 	
-	@PostMapping("/addstudent") //add new student into database
-	public Student addstudent(@RequestBody Student student)
+//	@PostMapping("/addstudent") //add new student into database
+//	public Student addstudent(@RequestBody Student student)
+//	{
+//		this.dao.addstudent(student);
+//		return student;
+//	}
+	
+
+	@PostMapping("/addstudent")        //Add new teacher
+	public boolean addstudent(@RequestBody Student student)
 	{
-		this.dao.addstudent(student);
-		return student;
+		boolean add =dao.addnewstudent(student);
+		return add;
 	}
 
 	@PostMapping("/updatestudent")   //update student details
@@ -93,7 +101,7 @@ public class StudentController {
 		return s;
 	}
 
-	@PostMapping("/studentbyid/{sid}")
+	@GetMapping("/studentbyid/{sid}")
 	public Student studentbyid(@PathVariable int sid)
 	{
 		Student stud = new Student();

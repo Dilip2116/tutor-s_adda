@@ -71,14 +71,22 @@ public class TeacherController {
 	{
 		dao.deleteTeacher(id);
 	}
-	
-	@PostMapping("/addteacher")        //Add new teacher
-	public Teacher addteacher( @RequestBody Teacher teacher)
-	{
-		this.dao.addteacher(teacher);
-		return teacher;
-	}
+//	
+//	@PostMapping("/addteacher")        //Add new teacher
+//	public Teacher addteacher( @RequestBody Teacher teacher)
+//	{
+//		this.dao.addteacher(teacher);
+//		return teacher;
+//	}
 
+	@PostMapping("/addteacher")        //Add new teacher
+	public boolean addnewteacher( @RequestBody Teacher teacher)
+	{
+		boolean add =dao.addnewteacher(teacher);
+		return add;
+	}
+	
+	
 	@PostMapping("/updateteacher")   //update teacher details
 	public boolean updateTeacher(@RequestBody Teacher teacher)
 	{

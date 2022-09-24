@@ -37,7 +37,9 @@ public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 	@Query(value="select * from teacher where teacher_id=:tid and teacher_password=:oldpass ;",nativeQuery =true )
 	public List<Teacher> verifypass(@PathVariable("tid") int tid,@PathVariable("oldpass") String oldpass);
 
-	
+	@Query(value="select * from teacher where teacher_username=:uname or teacher_mobile=:mob or teacher_email=:email ;",nativeQuery=true)
+	public List<Teacher> addnewteacher(@PathVariable("uname") String uname,@PathVariable("mob") String mob,@PathVariable ("email") String email);
+
 
 	
 }

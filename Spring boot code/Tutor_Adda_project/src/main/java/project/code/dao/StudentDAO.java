@@ -95,20 +95,38 @@ public class StudentDAO {
 		return stud;
 	}
 
-public boolean verifyoldpassword(int sid,String oldpass, String newpass)
-{
+	public boolean verifyoldpassword(int sid,String oldpass, String newpass)
+	{
+
+		List <Student> lstud=studentRepository.verifypass(sid , oldpass );
+		if(lstud.isEmpty())
+		{
+			return false;
+		}
+		else
+		{
+			studentRepository.changePass(sid,newpass);
+			return true;
+		}
+	}
+
+	public boolean addnewstudent(Student student) {
+			String uname=student.getStudent_username();
+			String mob=student.getStudent_mobile();
+			String email=student.getStudent_email();
+			List<Student> lstudent=studentRepository.addnewstudent(uname,mob,email);
+
+			if(lstudent.isEmpty())
+			{
+				studentRepository.save(student);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	
-	List <Student> lstud=studentRepository.verifypass(sid , oldpass );
-	if(lstud.isEmpty())
-	{
-		return false;
-	}
-	else
-	{
-	studentRepository.changePass(sid,newpass);
-	return true;
-	}
-}
 
 
 }

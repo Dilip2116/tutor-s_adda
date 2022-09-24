@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -46,34 +47,20 @@ public class TeacherDAO  {
 
 	public boolean updateteacher(Teacher teacher)
 	{
-<<<<<<< HEAD
+
 		Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
 
 
 		//		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
 
-		System.out.print(teacher.getTeacher_about());
-		System.out.print(teacher.getTeacher_email());
-		System.out.print(teacher.getTeacher_id());
-		System.out.print(teacher.getTeacher_experience());
-		System.out.print(teacher.getTeacher_fname());
-		System.out.print(teacher.getTeacher_gender());
-		System.out.print(teacher.getTeacher_lname());
-		System.out.print(teacher.getTeacher_mobile());
-		System.out.print(teacher.getTeacher_password());
-		System.out.print(teacher.getTeacher_qualification());
-		System.out.print(teacher.getTeacher_username());
-		System.out.print(teacher.getAddress());
-=======
 
-	Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
-		
-		
-//		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
-		
-		
-		
->>>>>>> e67b7e69fca232248617bf3370f713d5440fbc9a
+		//Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
+
+
+		//		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
+
+
+
 
 		if(updateT.isPresent())
 		{
@@ -139,6 +126,23 @@ public class TeacherDAO  {
 		{
 			teacherRepository.changePass(tid,newpass);
 			return true;
+		}
+	}
+
+	public boolean addnewteacher(Teacher teacher) {
+		String uname=teacher.getTeacher_username();
+		String mob=teacher.getTeacher_mobile();
+		String email=teacher.getTeacher_email();
+		List<Teacher> lteacher=teacherRepository.addnewteacher(uname,mob,email);
+
+		if(lteacher.isEmpty())
+		{
+			teacherRepository.save(teacher);
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

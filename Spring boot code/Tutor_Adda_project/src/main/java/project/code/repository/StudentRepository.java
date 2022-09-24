@@ -27,4 +27,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 	@Query(value="select * from student where student_id=:sid and student_password=:oldpass ;",nativeQuery =true )
 	public List<Student> verifypass(@PathVariable("sid") int sid,@PathVariable("oldpass") String oldpass);
+
+	@Query(value="select * from student where student_username=:uname or student_email=:email or student_mobile=:mob ;",nativeQuery =true)
+	public List<Student> addnewstudent (@PathVariable("uname") String uname,@PathVariable("mob") String mob,@PathVariable ("email") String email);
 }
