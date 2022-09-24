@@ -120,7 +120,9 @@ public class CourseDAO  {
 		course=coursesRepository.upcomming_course_teahcer(tid);
 
 		return course;
+		
 	}
+	
 
 	public List<Courses> coursesbystudentid(int id)  //get all courses by student id
 	{

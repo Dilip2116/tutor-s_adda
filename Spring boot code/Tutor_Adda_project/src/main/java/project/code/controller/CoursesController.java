@@ -167,7 +167,17 @@ public class CoursesController {
 		return course;
 	}
 	
-
+	@GetMapping("/upcommingstudentcourse/{sid}") //return upcoming course of particular student
+	public Courses  studentupcommingcourse (@PathVariable int sid) 
+	{
+		Courses course ;
+		course=dao.studentupcommingcourse(sid);
+		return course;
+	}
+	
+	
+	
+	
 @GetMapping("/coursesbystudentid/{id}")
 public List<Courses> coursesbystudentid(@PathVariable int id)
 {

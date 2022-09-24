@@ -68,17 +68,11 @@ public class StudentDAO {
 	//			return courses;
 	//		}
 
-	public boolean updatestudent(Student student)
+	public Student updatestudent(Student student)
 	{
-		Optional<Student> updateS= studentRepository.findById(student.getStudentId());
+		Student updateStudent = studentRepository.findById(student.getStudentId()).get();
 
 
-
-		if(updateS.isPresent())
-		{
-		
-			Student updateStudent=updateS.get();
-		
 
 		updateStudent.setAddress(student.getAddress());
 		updateStudent.setStudent_fname(student.getStudent_fname());
@@ -91,10 +85,8 @@ public class StudentDAO {
 		updateStudent.setStudent_email(student.getStudent_email());
 
 		studentRepository.save(updateStudent);
-		return true;
-		
-		}
-		return false;
+		return updateStudent;
+
 	}
 
 	public Student getstudentbyid(int sid) 
