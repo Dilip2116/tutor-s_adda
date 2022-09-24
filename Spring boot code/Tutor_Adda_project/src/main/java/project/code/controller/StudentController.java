@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -92,11 +93,20 @@ public class StudentController {
 		return s;
 	}
 
-	@GetMapping("/studentbyid/{sid}")
+	@PostMapping("/studentbyid/{sid}")
 	public Student studentbyid(@PathVariable int sid)
 	{
 		Student stud = new Student();
 		stud = dao.getstudentbyid(sid);
 		return stud;
 		}
+	
+	@PutMapping("/changestudentpassword/{sid}/{oldpassword}/{newpassword}")
+	public boolean changepassword(@PathVariable int sid,@PathVariable String oldpassword,@PathVariable String newpassword)
+	{
+		//Student stud = new Student();
+		boolean stud = dao.verifyoldpassword(sid,oldpassword,newpassword);
+	return stud;
+	}
+
 }

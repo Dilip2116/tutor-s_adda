@@ -121,4 +121,13 @@ public class TeacherController {
 		return n;
 	}
 
+	
+	@PutMapping("/changeteacherpassword/{tid}/{oldpassword}/{newpassword}")
+	public boolean changepassword(@PathVariable int tid,@PathVariable String oldpassword,@PathVariable String newpassword)
+	{
+		//Student stud = new Student();
+		boolean teach = dao.verifyoldpassword(tid,oldpassword,newpassword);
+	return teach;
+	}
+
 }
