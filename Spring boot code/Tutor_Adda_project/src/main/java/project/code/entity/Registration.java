@@ -13,11 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-<<<<<<< HEAD
-=======
-//@AllArgsConstructor
-//@NoArgsConstructor
->>>>>>> 31aa4b756d2e04b534404cbe7e69f40cfbabd975
+
 @IdClass(CompositeRegister.class)
 public class Registration 
 {

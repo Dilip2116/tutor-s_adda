@@ -46,26 +46,7 @@ public class TeacherDAO  {
 
 	public boolean updateteacher(Teacher teacher)
 	{
-<<<<<<< HEAD
-		Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
 
-
-		//		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
-
-		System.out.print(teacher.getTeacher_about());
-		System.out.print(teacher.getTeacher_email());
-		System.out.print(teacher.getTeacher_id());
-		System.out.print(teacher.getTeacher_experience());
-		System.out.print(teacher.getTeacher_fname());
-		System.out.print(teacher.getTeacher_gender());
-		System.out.print(teacher.getTeacher_lname());
-		System.out.print(teacher.getTeacher_mobile());
-		System.out.print(teacher.getTeacher_password());
-		System.out.print(teacher.getTeacher_qualification());
-		System.out.print(teacher.getTeacher_username());
-		System.out.print(teacher.getAddress());
-
-=======
 	Optional<Teacher> updateT= teacherRepository.findById(teacher.getTeacher_id());
 		
 		
@@ -73,7 +54,7 @@ public class TeacherDAO  {
 		
 		
 		
->>>>>>> 295bc07935264ed74c3e89cc939a86fe62d883f4
+
 		if(updateT.isPresent())
 		{
 
