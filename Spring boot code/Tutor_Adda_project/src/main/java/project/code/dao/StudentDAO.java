@@ -103,7 +103,20 @@ public class StudentDAO {
 		return stud;
 	}
 
-
+public boolean verifyoldpassword(int sid,String oldpass, String newpass)
+{
+	
+	List <Student> lstud=studentRepository.verifypass(sid , oldpass );
+	if(lstud.isEmpty())
+	{
+		return false;
+	}
+	else
+	{
+	studentRepository.changePass(sid,newpass);
+	return true;
+	}
+}
 
 
 }

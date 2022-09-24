@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import project.code.entity.Student;
 import project.code.entity.Teacher;
 
 
@@ -28,8 +29,13 @@ public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 	
 //	@Query(value="select * from teacher where teacher.teacher_id=:teacher_id;",nativeQuery=true)
 //	public Teacher findteach(@PathVariable("teacher_id") int teacher_id);
+	@Modifying
+	@Transactional
+	@Query(value="update teacher set teacher_password=:newpass where teacher_id=:tid ;",nativeQuery=true)
+		public void changePass(@PathVariable("tid") int tid,@PathVariable("newpass") String newpass);
 
-
+	@Query(value="select * from teacher where teacher_id=:tid and teacher_password=:oldpass ;",nativeQuery =true )
+	public List<Teacher> verifypass(@PathVariable("tid") int tid,@PathVariable("oldpass") String oldpass);
 
 	
 
