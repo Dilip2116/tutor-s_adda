@@ -50,18 +50,7 @@ public class TeacherDAO  {
 		
 //		Teacher updateTeacher = teacherRepository.findteach(teacher.getTeacher_id());
 		
-		System.out.print(teacher.getTeacher_about());
-		System.out.print(teacher.getTeacher_email());
-		System.out.print(teacher.getTeacher_id());
-		System.out.print(teacher.getTeacher_experience());
-		System.out.print(teacher.getTeacher_fname());
-		System.out.print(teacher.getTeacher_gender());
-		System.out.print(teacher.getTeacher_lname());
-		System.out.print(teacher.getTeacher_mobile());
-		System.out.print(teacher.getTeacher_password());
-		System.out.print(teacher.getTeacher_qualification());
-		System.out.print(teacher.getTeacher_username());
-		System.out.print(teacher.getAddress());
+		
 		
 		if(updateT.isPresent())
 		{
