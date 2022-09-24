@@ -1,7 +1,10 @@
-import React ,{useState,useEffect}from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router'
 // import { useSelector } from "react-redux";
 import Axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import validator from 'validator';
+import swal from 'sweetalert'
 
 
 export default function StudentProfile() {
@@ -21,109 +24,198 @@ export default function StudentProfile() {
   }
 
   function logOut() {
-
+    swal("Logged Out!");
     localStorage.removeItem("studentUsername");
     localStorage.removeItem("studentID");
-  
-    navigate('/student_login');
     
+
+   
+
+    navigate('/student_login');
+
   }
 
   // //fetching username from reducx store
   // const uname = useSelector((state)=>{return state.username});
 
-  
+
   // const [username,setUsername]=useState("");
-   const  username=localStorage.getItem('studentUsername');
-   const studentid=localStorage.getItem("studentID");
+  const username = localStorage.getItem('studentUsername');
+  const studentid = localStorage.getItem("studentID");
 
-  
-//     function verify(){
-//       // setUsername(localStorage.getItem('studentUsername'));
-//       username=localStorage.getItem('studentUsername');
-//       if(username===''){
-//         navigate('/student_login')
-//       }
-//     }
 
-const [myData ,setMyData]=useState([])
+  //     function verify(){
+  //       // setUsername(localStorage.getItem('studentUsername'));
+  //       username=localStorage.getItem('studentUsername');
+  //       if(username===''){
+  //         navigate('/student_login')
+  //       }
+  //     }
+
+  const [myData, setMyData] = useState([])
+
+  const [emailValid, setEmailValid] = useState(true);
+
+  //email validation
+  const validateEmail = email => {
+    return validator.isEmail(email) && email.length > 0;
+  }
+
+  //for changing password
+
+  const [oldpassword,setOldPass] = useState("");
+  const [newpassword,setNewPassword] = useState("");
+  const [repass,setRepass] =useState("");
+  const [passcheck1,setPasscheck1] = useState(true);
+  const [passcheck2,setPasscheck2] = useState(true);
+  const [isSubmit, setIsSubmit  ]= useState(false);
+
+  const [error,setError] = useState({});
+  const validatePass = (newpassword,repass) => {
+    const errors ={}
+   const passregex = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$ %^&*-]).{8,15}/;
    
-console.log(myData);
+    if (!passregex.test(newpassword)) {
+      errors.newpassword = "This is not a valid password At least one upper case English letter,lower case English letter,one digit ,one special character,Minimum eight in length";
+      setPasscheck1(false)
+    }
+    if(newpassword!=repass)
+    {
+      setPasscheck2(false)
+      errors.repass="new password and re-type Password fields must be same";
+    }
+
+    return errors;
+    
+  }
 
 
-  
-const [student_fname, setFname] = useState('')
-// const [student_gender, setGender] = useState('')
-  const [student_lname, setLname] = useState('')
-const [student_mobile, setMobile] = useState('')
-
-  const [student_password, setPassword] = useState('')
-  // const [rePassword  , setRepass] = useState('')
-const [student_username, setUsername] = useState('')
-
-  const [student_dob, setDob] = useState('')
-const [ student_email, setEmail] = useState('')
 
 
-//   const [city  , setCity] = useState('')
-// const [ country, setCountry] = useState('')
-//   const [pincode, setPin] = useState('')
-// const [state, setState] = useState('')
-//   const [street, setStreet] = useState('')
+ // console.log(myData);
 
-  const address = myData.address;
-  const student_gender=myData.student_gender;
-  const student_id=myData.student_id;
+
+
+
+
+
+
+
+
+
+
 
   // const address={city, country, pincode, state, street}
 
-  const updateProfile = async (event) => {
-    
-    try{
-      const res = await Axios.post(`http://localhost:8080/updatestudent`,{student_id,student_email , student_fname , student_gender , student_lname , student_mobile , student_password , student_username , student_dob,address})
-      if(res.data !== ""){
-        alert("Successfully Porfile Updated");
-        window.location.href = "/student_profile"}
-      else{window.location.href = "/student_register"}
-      }
-      catch (err){
-        console.log(err)
-      }
-   }
+  const student_dob = myData.student_dob;
+  const student_fname = myData.student_fname;
+  const student_email = myData.student_email;
+  const student_password = myData.student_password;
+  const student_gender = myData.student_gender;
+  const student_username = myData.student_username;
+  const student_lname = myData.student_lname;
+  const studentId = myData.studentId;
+  console.log(studentId);
+  const student_mobile = myData.student_mobile;
+  const address = myData.address;
   
+  //student_id,student_email , student_fname , student_gender , student_lname , student_mobile , student_password , student_username , student_dob,address
 
+  const updateProfile = async () => {
+    try {
+      const res = await Axios.post(`http://localhost:8080/updatestudent`, {
+        studentId, student_email, student_fname, student_gender, student_lname, student_mobile, student_password, student_username, student_dob, address
+      })
+      console.log("post", myData)
+      console.log("response", res)
 
-const getData = async (event) => {
-  try{
-     
-    const res = await Axios.get(`http://localhost:8080/studentbyid/${studentid}`)
-    if(res.data !== ""){
-     setMyData(res.data);
-     console.log(myData);
-  }
-    else{alert("Error!!!")}
+      if (res.data) {
+        alert("Profile Updated Successfully");
+        localStorage.setItem("studentUsername", student_username);
+        navigate("/studentdb")
+      }
+      else {
+        alert("Profile Not Updated!! ");
+      }
     }
-    catch (err){
+
+    catch (err) {
       console.log(err)
     }
   }
 
-  useEffect(()=>{
+
+
+  const getData = async (event) => {
+    try {
+
+      const res = await Axios.post(`http://localhost:8080/studentbyid/${studentid}`)
+      if (res.data !== "") {
+        setMyData(res.data);
+        console.log(myData);
+      }
+      else { alert("Error!!!") }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+  //change password
+  const updatePassword = async (e) => {
+      // e.preventDefault();
+      console.log("inside function",newpassword)
+      console.log("inside function",oldpassword)
+      console.log("inside function",studentId)
+      setError(validatePass( newpassword,repass))
+      setIsSubmit(true);
+      console.log("inside function",isSubmit)
+      console.log("error",error);
+      if(Object.keys(error).length==0 && isSubmit){
+        console.log("inside function")
+    try {
+      const res = await Axios.put(`http://localhost:8080/changestudentpassword/${studentId}/${newpassword}/${oldpassword}`)
+      
+      console.log("response", res)
+
+      if (res.data==true)
+        {
+          console.log("response")
+        //   <div className="spinner-border" role="status">
+        //   <span className="sr-only">Loading...</span>
+        // </div>
+        alert("Password Updated Successfully");
+        navigate("/studentdb")
+        }
+      else {
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+        alert("Password Not Updated!! ");
+          }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+  }
+
+  useEffect(() => {
     getData();
-    updateProfile();
-},[] )
+
+  }, [])
 
   //Rendering
   return (
     <div>
       <body>
-        
+
         {/* <!-- ======= Sidebar ======= --> */}
 
         <aside id="sidebar" className="sidebar">
 
           {/* <!-- ======= Header ======= --> */}
-        {/* <header id="header" className="header fixed-top d-flex align-items-center"> */}
+          {/* <header id="header" className="header fixed-top d-flex align-items-center"> */}
           <div className="d-flex align-items-center justify-content-between">
             <i className="bi bi-list toggle-sidebar-btn"></i>
             {/* <a href="#" className="logo d-flex align-items-center">
@@ -135,74 +227,49 @@ const getData = async (event) => {
           <nav className="header-nav ms-auto">
             <ul className="d-flex align-items-center">
               <li className="nav-item dropdown pe-3">
-              <a href="#" className="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown">
+                <a href="#" className="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown">
                   <img src="assets/images/profile.jpg" alt="Profile" className="rounded-circle" />
-                  <br/><br/><span className="d-none d-md-block ps-2 text" ><h3><strong>{username}</strong></h3></span>
+                  <br /><br /><span className="d-none d-md-block ps-2 text" ><h3><strong>{myData.student_username}</strong></h3></span>
                 </a>
-                {/* <!-- End Profile Image Icon --> */}
-                {/* <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                  <li className="dropdown-header">
-                    <h6>Welecom {username}</h6>
-                    <span>Tutor's Adda</span>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <button className="dropdown-item d-flex align-items-center" style={{ 'border': 'none' }} onClick={profile}>
-                      <i className="bi bi-person"></i>
-                      <span>My Profile</span>
-                    </button>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item d-flex align-items-center" href="http://localhost:8081">
-                      <i className="bi bi-box-arrow-right"></i>
-                      <span>Sign Out</span>
-                    </a>
-                  </li>
-                </ul> */}
-                {/* <!-- End Profile Dropdown Items --> */}
+              
               </li>
               {/* <!-- End Profile Nav --> */}
             </ul>
           </nav>
           {/* <!-- End Icons Navigation --> */}
-        {/* </header> */}
-        {/* <!-- End Header --> */}
+          {/* </header> */}
+          {/* <!-- End Header --> */}
 
-          <br/><br/><br/>
+          <br /><br /><br />
           <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-              <button class="nav-link collapsed" style={{ 'border': 'none','width': '100%' }} onClick={dashboard}>
+              <button class="nav-link collapsed" style={{ 'border': 'none', 'width': '100%' }} onClick={dashboard}>
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
               </button>
             </li>
             {/* <!-- End Dashboard Nav --> */}
             <li class="nav-item">
-              <button class="nav-link collapsed" style={{ 'border': 'none' ,'width': '100%'}} onClick={profile}>
+              <button class="nav-link collapsed" style={{ 'border': 'none', 'width': '100%' }} onClick={profile}>
                 <i class="bi bi-card-list"></i>
                 <span>Profile</span>
               </button>
             </li>
             {/* End Exam Page Nav */}
             <li class="nav-item">
-              <button class="nav-link collapsed" style={{ 'border': 'none','width': '100%' }} onClick={schedule}>
+              <button class="nav-link collapsed" style={{ 'border': 'none', 'width': '100%' }} onClick={schedule}>
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>Schedule</span>
               </button>
             </li>
             <li class="nav-item">
-              <button class="nav-link collapsed" style={{ 'border': 'none' ,'width': '100%'}} onClick={joincourse}>
+              <button class="nav-link collapsed" style={{ 'border': 'none', 'width': '100%' }} onClick={joincourse}>
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>New Course</span>
               </button>
             </li>
-            <br/>
-            <br/><br/>
+            <br />
+            <br /><br />
             <li className="nav-item">
               <button className="btn btn-success" style={{ 'border': 'none', 'width': '100%' }} onClick={logOut}>
                 <i className="bi bi-arrow-bar-right"></i>
@@ -227,7 +294,7 @@ const getData = async (event) => {
           <section class="section">
             <div class="row">
               <div class="col-xl-12">
-                <div class="card" style={{'width':'100%','height':'100%'}}>
+                <div class="card" style={{ 'width': '100%', 'height': '100%' }}>
                   <div class="card-body pt-3">
                     {/* <!-- Bordered Tabs --> */}
                     <ul class="nav nav-tabs nav-tabs-bordered">
@@ -244,153 +311,149 @@ const getData = async (event) => {
                     <div class="tab-content   pt-12 set-width">
                       <div class="tab-pane fade show active profile-overview" id="profile-overview">
                         <h5 class="card-title">Profile Details</h5>
-                                           
+
                         <div className="col-lg-8">
-                                                    <div className="">
-                                                        {/* <div className="card-header bg-transparent border-0">
+                          <div className="">
+                            {/* <div className="card-header bg-transparent border-0">
                                                                 <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Edit Information</h3>
                                                             </div> */}
-                                                        <div className="card-body pt-0">
-                                                            <table className="">
-                                                                <tr>
-                                                                    <th width="30%">First Name</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_fname} </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="30%">Last Name</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_lname} </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="30%">Mobile Number</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_mobile}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <th width="30%">Username</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_username}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="30%">Gender</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_gender}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="30%">E-mail</th>
-                                                                    <td width="2%">:</td>
-                                                                    <td>{myData.student_email}</td>
-                                                                </tr>
-                                                                
-                                                               
-                                                                
-
-                                                            </table>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                      </div> 
+                            <div className="card-body pt-0">
+                              <table className="">
+                                <tr>
+                                  <th width="30%">First Name</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_fname} </td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">Last Name</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_lname} </td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">Mobile Number</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_mobile}</td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">Username</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_username}</td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">Gender</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_gender}</td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">E-mail</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_email}</td>
+                                </tr>
+                                <tr>
+                                  <th width="30%">DOB</th>
+                                  <td width="2%">:</td>
+                                  <td>{myData.student_dob}</td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <div class="tab-pane fade profile-edit pt-6" id="profile-edit">
-                        
+
                         <form>
-                          <div class="row mb-3">
-                            <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="firstName" type="text" class="form-control" id="firstName"  onChange={(e)=>{setFname(e.target.value)}} defaultValue={myData.student_fname} />
+
+                          <div className="col-lg-8">
+                            <div className="">
+                              {/* <div className="card-header bg-transparent border-0">
+                                                                <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Edit Information</h3>
+                                                            </div> */}
+                              <div className="card-body pt-0">
+                                <table className="">
+                                  <tr>
+                                    <th width="30%">First Name</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_fname} <input type="text" onChange={(e) => { setMyData({ ...myData, student_fname: e.target.value }) }} required></input></td>
+                                  </tr>
+                                  <tr>
+                                    <th width="30%">Last Name</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_lname}  <input type="text" onChange={(e) => { setMyData({ ...myData, student_lname: e.target.value }) }} /></td>
+                                  </tr>
+                                  <tr>
+                                    <th width="30%">Mobile Number</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_mobile}<input type="text" onChange={(e) => { setMyData({ ...myData, student_mobile: e.target.value }) }} /></td>
+                                  </tr>
+
+                                  <tr>
+                                    <th width="30%">Username</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_username} <input type="text" onChange={(e) => { setMyData({ ...myData, student_username: e.target.value }) }} ></input></td>
+                                  </tr>
+                                  <tr>
+                                    <th width="30%">Gender</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_gender} <input type="text" onChange={(e) => { setMyData({ ...myData, student_gender: e.target.value }) }} ></input></td>
+                                  </tr>
+                                  <tr>
+                                    <th width="30%">DOB</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_dob} <input type="date" onChange={(e) => { setMyData({ ...myData, student_dob: e.target.value }) }} ></input></td>
+                                  </tr>
+                                  <tr>
+                                    <th width="30%">E-mail</th>
+                                    <td width="2%">:</td>
+                                    <td>{myData.student_email} <input type="email" onChange={(e) => { setMyData({ ...myData, student_email: e.target.value }); setEmailValid(validateEmail(e.target.value)) }} ></input>
+                                      {!emailValid && <p style={{ 'color': 'red' }}>Email is not valid!!</p>}</td>
+                                  </tr>
+                                </table>
+                                <div className='center d-grid gap-2 col-6 mx-auto'>
+                                  <Button class="btn btn-success" onClick={updateProfile}>Save Changes</Button>
+                                </div>
+
+                              </div>
                             </div>
                           </div>
-                          <div class="row mb-3">
-                            <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="lastName" type="text" class="form-control" id="lastName" onChange={(e)=>{setLname(e.target.value)}}  defaultValue={myData.student_lname} />
-                            </div>
-                          </div>
-                          <div class="row mb-3">
-                            <label for="mobno" class="col-md-4 col-lg-3 col-form-label">Mobile Number</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="mobno" type="text" class="form-control" id="mobno" onChange={(e)=>{setMobile(e.target.value)}} defaultValue={myData.student_mobile} />
-                            </div>
-                          </div>
-                          <div class="row mb-3">
-                            <label for="dob" class="col-md-4 col-lg-3 col-form-label">Date Of Birth</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="dob" type="date" class="form-control" id="dob" onChange={(e)=>{setDob(e.target.value)}} defaultValue={myData.student_dob} />
-                            </div>
-                          </div>
-                          <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="username" type="text" class="form-control" id="username" onChange={(e)=>{setUsername(e.target.value)}}  defaultValue={myData.student_username} />
-                            </div>
-                          </div>
-                          {/* <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-lg-3 col-form-label">Gender</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="username" type="text" class="form-control" id="username" value={myData.student_gender} />
-                            </div>
-                          </div> */}
-                          <div class="row mb-3">
-                            <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="email" type="text" class="form-control" id="Email" onChange={(e)=>{setEmail(e.target.value)}} defaultValue={myData.student_email} />
-                            </div>
-                          </div>
-                           {/*<div class="row mb-3">
-                            <label for="ssc" class="col-md-4 col-lg-3 col-form-label">SSC Percentage</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="ssc" type="text" class="form-control" id="ssc" value="90%" />
-                            </div>
-                          </div>
-                          <div class="row mb-3">
-                            <label for="hsc" class="col-md-4 col-lg-3 col-form-label">HSC Percentage</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="hsc" type="text" class="form-control" id="hsc" value="70%" />
-                            </div>
-                          </div>
-                          <div class="row mb-3">
-                            <label for="degree" class="col-md-4 col-lg-3 col-form-label">Degree Percentage</label>
-                            <div class="col-md-8 col-lg-9">
-                              <input name="degree" type="text" class="form-control" id="degree" value="80%" />
-                            </div>
-                          </div> */}
-                          <div class="text-center">
-                            <button type="submit" pnClick={updateProfile} class="btn btn-primary">Save Changes</button>
-                          </div>
+
+
+
                         </form>
-                        
+
                       </div>
                       <div class="tab-pane fade pt-3" id="profile-change-password">
-                        
+
                         <form>
                           <div class="row mb-3">
                             <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                             <div class="col-md-8 col-lg-9">
-                              <input name="password" type="password" class="form-control" id="currentPassword" />
+                              <input name="password" type="password" class="form-control" id="currentPassword" onChange={(e) => {setOldPass(e.target.value)}}/>
                             </div>
                           </div>
                           <div class="row mb-3">
                             <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                             <div class="col-md-8 col-lg-9">
-                              <input name="newpassword" type="password" class="form-control" id="newPassword" />
+                              <input name="newpassword" type="password" class="form-control" id="newPassword"  onChange={(e) => {setNewPassword(e.target.value)}} />
                             </div>
+                            {!passcheck1 && <p style={{'color':'red'}}>{error.newpassword}</p>}
+                            
                           </div>
                           <div class="row mb-3">
                             <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                             <div class="col-md-8 col-lg-9">
-                              <input name="renewpassword" type="password" class="form-control" id="renewPassword" />
+                              <input name="renewpassword" type="password" class="form-control" id="renewPassword" onChange={(e) => {setRepass(e.target.value)}}  />
                             </div>
+                            {!passcheck2 && <p style={{'color':'red'}}>{error.repass}</p>}
+                            
                           </div>
                           <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Change Password</button>
+                            <button type="submit" class="btn btn-primary" onClick={updatePassword}>Change Password</button>
                           </div>
                         </form>
-                        
+
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>

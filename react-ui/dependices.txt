@@ -51,3 +51,8 @@ npm install react-hook-form
 /*--- for email validator
 
 npm install validator
+
+
+/*-- for sweetalert 
+
+npm install sweetalert --save

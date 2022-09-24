@@ -131,4 +131,15 @@ public class CourseDAO  {
 		return courses;
 	}
 
+	
+	public Courses studentupcommingcourse(int sid) //gives upcoming one course lecture for particular student 
+	{
+		Courses course;
+		course=coursesRepository.upcomming_course_student(sid);
+
+		return course;
+		
+	}
+
+
 }

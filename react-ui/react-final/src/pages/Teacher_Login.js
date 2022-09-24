@@ -22,59 +22,44 @@ export default function Teacher_Login(){
     let [password,setPassword] = useState("")
     let navigate = useNavigate()
    
-    
-   //  const dispatch= useDispatch()
    const user =localStorage.getItem("teacherUsername") ;
    const formValues={username: username ,password: password};
-    
-   //  const handleChange = (e) => {
-   //    const { name, value } = e.target;
-   //    setFormValues({ ...formValues, [name]: value });
-   //  };
-
+   
    const { register } = useForm();
 
      
 
       const validate = (values) => {
          const errors = {};
-         // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
          const passregex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
          if (!values.username) {
            errors.username = "Username is required!";
          }
-         // if (!values.email) {
-         //   errors.email = "Email is required!";
-         // } else if (!regex.test(values.email)) {
-         //   errors.email = "This is not a valid email format!";
-         // }
          if (!values.password) {
             errors.password = "password is required!";
-          } else if (!passregex.test(values.student_password)) {
+          } else if (!passregex.test(values.password)) {
             errors.password = "This is not a valid password At least one upper case English letter,lower case English letter,one digit ,one special character,Minimum eight in length";
           }
          return errors;
        };
 
     
-    const postData = async (event) => {
-      event.preventDefault();
+    const postData = async (e) => {
+      e.preventDefault();
       setFormErrors(validate(formValues));
+      console.log("Errors : ",formErrors)
       setIsSubmit(true);
+      console.log("Submit : ",isSubmit)
+      if(Object.keys(formErrors).length === 0 && isSubmit ){
       try{
          
         const res = await Axios.post(`http://localhost:8080/teacherlogin/${username}/${password}`)
         if(res.data !== ""){
          
          localStorage.setItem("teacherUsername", username);
-         localStorage.setItem("teacherid",res.data.teacher_id);
-         
-         
+         localStorage.setItem("teacherid",res.data.teacher_id);        
          window.location.href = "/teacherdb"
-       
-         
-   
       }
         else{
          alert("Enter Valid username and paassword");
@@ -84,6 +69,7 @@ export default function Teacher_Login(){
           console.log(err)
         }
       }
+    }
     
 
 
@@ -93,22 +79,22 @@ export default function Teacher_Login(){
       <div>
       {user ? <TeacherDashboard/> :
         <form className="form_style">
-          {Object.keys(formErrors).length === 0 && isSubmit ? (
+          {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
             <div className="alert alert-success " role="alert"><div className="center"><strong>Signed in successfully</strong></div></div>
-            ):<></>}
+            ):<></>} */}
 
         <h3 className="textalign">Teacher-Login</h3>
 
         <div className="form-group">
            <label>Username</label>
-           <input type="text" className="form-control" placeholder="Enter username" onChange={(e)=>{ setUname(e.target.value) } }  required/>
+           <input type="text" className="form-control" placeholder="Enter username" onChange={(e)=>{ setUname(e.target.value) } }  />
           
         </div>
         <p style={{'color':'red'}}>{formErrors.username}</p>
 
         <div className="form-group">
            <label>Password</label>
-           <input type="password" className="form-control" placeholder="Enter password" onChange={(e)=>{ setPassword(e.target.value)} } required/>
+           <input type="password" className="form-control" placeholder="Enter password" onChange={(e)=>{ setPassword(e.target.value)} } />
         </div>
         <p style={{'color':'red'}}>{formErrors.password}</p>
       

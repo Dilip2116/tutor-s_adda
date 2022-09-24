@@ -1,12 +1,7 @@
 import React,{useState} from "react";
-import { Link, Outlet } from "react-router-dom"
+import { Link} from "react-router-dom"
 import  Axios  from "axios";
-import { required, email } from 'react-admin'
 import { useForm } from "react-hook-form"
-import TeacherDashboard from "./TeacherDashboard";
-
-
-
 
 
 
@@ -24,7 +19,7 @@ const [teacher_password, setPassword] = useState('')
 const [teacher_qualification, setQualification] = useState('')
 const [teacher_username, setUsername] = useState('')
 const [city  , setCity] = useState('')
-const [ country, setCountry] = useState('')
+const [country, setCountry] = useState('')
 const [pincode, setPin] = useState('')
 const [state, setState] = useState('')
 const [street, setStreet] = useState('')
@@ -32,7 +27,8 @@ const [rePassword,setRepass] = useState('')
 
  //form validation ......
   const [formErrors, setFormErrors] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+
 
   const { register } = useForm();
  const formValues = {
@@ -62,9 +58,6 @@ const [rePassword,setRepass] = useState('')
     }
     if (!values.teacher_gender) {
       errors.teacher_gender = "gender is required!";
-    }
-    if (!values.student_dob) {
-      errors.student_dob = "Date of birth is required!";
     }
     if (!values.teacher_mobile) {
       errors.teacher_mobile = "Mobile  is required!";
@@ -109,8 +102,7 @@ const [rePassword,setRepass] = useState('')
       errors.teacher_password = "This is not a valid password At least one upper case English letter,lower case English letter,one digit ,one special character,Minimum eight in length";
     }
     if(values.teacher_password!=values.rePassword)
-    {
-      
+    {    
       errors.rePassword="Password and Confirm Password fields must be same";
     }
 
@@ -122,36 +114,18 @@ const address={city, country, pincode, state, street}
 
 const teacher={teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username, address}
 
-  const [file, setFile] = useState(null);
-  const fileHandler = event => {
-    console.log(event.target.files[0]);
-    let reader = new FileReader();
-    reader.onload = function(e) {
-      setFile(e.target.result);
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
 
-// const postData = async () => {
-//   try{
-//     const res = await Axios.post(`http://localhost:8080/addteacher`,{teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username, address})
-//     if(res.data !== ""){
-//       alert("Successfully registered");
-//       window.location.href = "/teacher_login"}
-//     else{window.location.href = "/teacher_register"}
-//     }
-//     catch (err){
-//       console.log(err)
-//     }
-//  }
-
- const postData = async () => {
-
-  setFormErrors(validate(formValues));
- 
-  if(formErrors ===null){
-    
+ const postData = async (e) => {
+  e.preventDefault();
+  setFormErrors(validate(formValues)); 
+  console.log("Errors : ",formErrors)
+  setIsSubmit(true);
+  console.log("Submit : ",isSubmit)
+  
+  if( Object.keys(formErrors).length === 0 && isSubmit )
+    {
   try{
+   
     const res = await Axios.post(`http://localhost:8080/addteacher`,{teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username, address})
     if(res.data !== ""){
       alert("Successfully registered");
@@ -159,18 +133,17 @@ const teacher={teacher_about, teacher_email, teacher_experience, teacher_gender,
     else{
       alert("Invalid credentials")
       window.location.href = "/teacher_register"}
+    
     }
     catch (err){
       console.log(err)
     }
- }
+  }
 }
 
 
   return (
   
-
-   
       <>
       <title>Teacher Registration</title>
 
@@ -204,14 +177,6 @@ const teacher={teacher_about, teacher_email, teacher_experience, teacher_gender,
         </div>
 
          <div className="row">
-          {/*<div className="col-md-6 mb-4 d-flex align-items-center">
-
-            <div className="form-outline datepicker w-100">
-              <input type="text" className="form-control form-control-lg" id="tDOB" onChange={(e) => setUserName(e.target.value)} required />
-              <label className="form-label">Birthday</label>
-            </div>
-
-          </div> */}
           <div className="col-md-6 mb-4">
 
             <h6 className="mb-2 pb-1">Gender: </h6>
@@ -237,8 +202,6 @@ const teacher={teacher_about, teacher_email, teacher_experience, teacher_gender,
           </div>
         </div>
         <p style={{'color':'red'}}>{formErrors.teacher_gender}</p>
-
-
 
 
         <div className="row">
@@ -404,19 +367,6 @@ const teacher={teacher_about, teacher_email, teacher_experience, teacher_gender,
           </div>
         </div>
 
-        {/* <div className="row">
-          <div className="col-md-12 mb-4 pb-2">
-
-            <div className="form-outline">
-              <input type="file" id="profile"  onChange={fileHandler} className="form-control form-control-lg" />
-              <label className="form-label" >Upload Profile</label>
-            </div>
-
-          </div>
-
-
-        </div>
- */}
 
         <div classNameName="form-group">
 

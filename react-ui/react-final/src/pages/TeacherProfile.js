@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useReducer } from 'react'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UploadImage from './UploadImage';
 import Axios from 'axios';
 import Button from 'react-bootstrap/Button';
-
+import { useForm } from "react-hook-form"
+import { useReference } from 'react-admin';
+import { set } from 'react-hook-form';
+import validator from 'validator';
 
 export default function TeacherProfile() {
 
@@ -60,8 +63,17 @@ export default function TeacherProfile() {
 
 
     const [myData, setMyData] = useState([])
+   
+
+    const [emailValid, setEmailValid] = useState(true);
+
+    //email validation
+    const validateEmail = email => {
+        return validator.isEmail(email) && email.length > 0;
+      }
 
 
+    
 
 
     //get techerData
@@ -84,70 +96,46 @@ export default function TeacherProfile() {
 
     //for editting profile>...
 
-    const [teacher_about, setAbout] = useState('')
-    const [teacher_email, setEmail] = useState('')
-    const [teacher_experience, setExperience] = useState('')
+  
+     
+     const teacher_fname=myData.teacher_fname;
+     const teacher_email= myData.teacher_email ;
+     const  teacher_gender= myData.teacher_gender ;
+     const teacher_lname= myData.teacher_lname;
+    const teacher_mobile=myData.teacher_mobile;
+   const  teacher_about =myData.teacher_about;
+   const  teacher_experience=myData.teacher_experience;
+   const  teacher_qualification=myData.teacher_qualification;
+   const teacher_username=myData.teacher_username;
+   const teacher_password=myData.teacher_password;
+   const  address=myData.address;
 
-    const [teacher_gender, setGender] = useState();
-    const [teacher_fname, setFname] = useState('')
-    const [teacher_lname, setLname] = useState('')
-    const [teacher_mobile, setMobile] = useState('')
-    const [teacher_password, setPassword] = useState('')
-    const [teacher_qualification, setQualification] = useState('')
-    const [teacher_username, setUsername] = useState('')
-    // const [teacher_about, setAbout] = useRef('')
-    // const [teacher_email, setEmail] = useRef('')
-    // const [teacher_experience, setExperience] = useRef('')
+     //validation 
+   
 
-    // const [teacher_gender,setGender]=useRef();
-    // const [teacher_fname, setFname] = useRef('')
-    // const [teacher_lname, setLname] = useRef('')
-    // const [teacher_mobile, setMobile] = useRef('')
-    // const [teacher_password, setPassword] = useRef('')
-    // const [teacher_qualification, setQualification] = useRef('')
-    // const [teacher_username, setUsername] = useRef('')
-
-    const address = myData.address
-    console.log(address);
-    // const teacher_password=myData.teacher_password;
-
-    // const teacher_gender=myData.teacher_gender;
-    console.log(teacher_gender);
-
-
-
-    console.log(teacher_password);
-    // const city=myData.address.city;
-    // const address_address_id=myData.address.address_address_id;
-    //const country=myData.address.country;
-    // const pincode=myData.address.pincode;
-    // const state=myData.address.state;
-    // const street=myData.address.street;
-
-
-    //  const teacheraddress={address_address_id,city, country, pincode, state, street}
-
-    // const teacherobj ={teacher_id,teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username,address}
-
+    
 
     const updateProfile = async () => {
         try {
-
-            const res = await Axios.post(`http://localhost:8080/updateteacher`, { teacher_id, teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username, address })
+            const res = await Axios.post(`http://localhost:8080/updateteacher`, { teacher_id, teacher_about, teacher_email, teacher_experience, teacher_gender, teacher_fname, teacher_lname, teacher_mobile, teacher_password, teacher_qualification, teacher_username, address  })
             if (res.data == true) {
                 alert("Profile Updated Successfully");
-                navigate("/teacherdb")
+                localStorage.setItem("teacherUsername", teacher_username);
+                navigate("/teacherprofile")
             }
             else {
                 alert("Profile Not Updated!! ");
             }
 
-        } catch (err) {
+        }
+   
+        catch (err) {
             console.log(err)
         }
     }
 
-    useEffect(() => {
+
+    useEffect(() => {    
         getData();
     }, [])
 
@@ -407,52 +395,54 @@ export default function TeacherProfile() {
                                                                 <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Edit Information</h3>
                                                             </div> */}
                                                             <div className="card-body pt-0">
-                                                                <table className="">
+                                                            <table className="">
                                                                     <tr>
                                                                         <th width="30%">First Name</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_fname} <input type="text" onBlur={(e) => { setFname(e.target.value) }} required></input></td>
+                                                                        <td>{myData.teacher_fname} <input type="text" onChange={(e) => {setMyData({...myData,teacher_fname:e.target.value})}} required></input></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">Last Name</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_lname}  <input type="text" onBlur={(e) => { setLname(e.target.value) }} /></td>
+                                                                        <td>{myData.teacher_lname}  <input type="text" onChange={(e) => {setMyData({...myData,teacher_lname:e.target.value}) }} /></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">Mobile Number</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_mobile}<input type="text" onBlur={(e) => { setMobile(e.target.value) }} /></td>
+                                                                        <td>{myData.teacher_mobile}<input type="text" onChange={(e) => {setMyData({...myData,teacher_mobile:e.target.value})}} /></td>
                                                                     </tr>
 
                                                                     <tr>
                                                                         <th width="30%">Username</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_username} <input type="text" onBlur={(e) => { setGender(e.target.value) }} ></input></td>
+                                                                        <td>{myData.teacher_username} <input type="text" onChange={(e) => {setMyData({...myData,teacher_username:e.target.value}) }} ></input></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">Gender</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_gender} <input type="text" onBlur={(e) => { setGender(e.target.value) }} ></input></td>
+                                                                        <td>{myData.teacher_gender} <input type="text" onChange={(e) => { setMyData({...myData,teacher_gender:e.target.value}) }} ></input></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">E-mail</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_email} <input type="email" onBlur={(e) => { setEmail(e.target.value) }} ></input></td>
+                                                                        <td>{myData.teacher_email} <input type="email" onChange={(e) => { setMyData({...myData,teacher_email:e.target.value}); setEmailValid(validateEmail(e.target.value))}} ></input>
+                                                                        { !emailValid && <p style={{'color':'red'}}>Email is not valid!!</p>}
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">Qualification</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_qualification} <input type="text" onBlur={(e) => { setQualification(e.target.value) }} ></input></td>
+                                                                        <td>{myData.teacher_qualification} <input type="text" onChange={(e) => {setMyData({...myData,teacher_qualification:e.target.value}) }} ></input></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">Experience(years)</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_experience} <input type="number" onBlur={(e) => { setExperience(e.target.value) }}></input></td>
+                                                                        <td>{myData.teacher_experience} <input type="number" onChange={(e) => { setMyData({...myData,teacher_experience:e.target.value}) }}></input></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th width="30%">About me</th>
                                                                         <td width="2%">:</td>
-                                                                        <td>{myData.teacher_about} <input type="text" onBlur={(e) => { setAbout(e.target.value) }} ></input></td>
+                                                                        <td>{myData.teacher_about} <input type="text" onChange={(e) => { setMyData({...myData,teacher_about:e.target.value}) }} ></input></td>
                                                                     </tr>
 
                                                                     
@@ -461,6 +451,7 @@ export default function TeacherProfile() {
                                                                   <center><div className='d-grid gap-2 d-md-block'>  <button type="button" onClick={() => { updateProfile(); }} className="btn btn-primary " >Save Changes</button></div></center>
                                                                     </td>
                                                                     </tr> */}
+
 
 
                                                                 </table>
