@@ -85,7 +85,7 @@ public class StudentController {
 	}
 
 	@PostMapping("/updatestudent")   //update student details
-	public boolean updateTeacher(@RequestBody Student student)
+	public boolean updateStudent(@RequestBody Student student)
 	{
 		
 		boolean s =dao.updatestudent(student);
