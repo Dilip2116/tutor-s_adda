@@ -18,7 +18,7 @@ On this global platform, multiple teachers can launch their online courses on an
 
 # feature
 
-  <h5> Three roles are present on project </h5>
+  <h3> Three roles are present on project </h3>
 
 ###  Admin
 <ol>
