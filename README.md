@@ -14,9 +14,11 @@
 On this global platform, multiple teachers can launch their online courses on any subject, and students can select the courses based on their preferences and reviews of teachers. This platform will help teachers to manage their individual schedules. At the end of each course, students can give reviews to the teacher regarding their performance to help other students while selecting courses.
 
 #feature
+
 ## Three role are present on project
+
 ### 1.) Admin
-           1.	Admin can login and logout.
+           #1.	Admin can login and logout.
            2.	Admin can view, update profile.
            3.	Admin can change password.
            4.	Admin can Update fee of courses.
@@ -35,11 +37,11 @@ On this global platform, multiple teachers can launch their online courses on an
            8. 	Student can give feedback for course and teacher.
 
 ### 3.) Teacher
-           1. Teacher can register.
+           1.         Teacher can register.
            2.	Teacher can login and logout.
            3.	Teacher can view, update profile.
            4.	Teacher can change password.
-           5. Teacher can launch multiple courses without having collision in time slot.
+           5.         Teacher can launch multiple courses without having collision in time slot.
            6.	Teacher can view student data.
            7.	Teacher can view reports.
            8. 	Teacher can view their upcoming class information
