@@ -15,7 +15,7 @@ On this global platform, multiple teachers can launch their online courses on an
 
 # feature
 
-## Three role are present on project
+  ## Three roles are present on project
 
 ### 1.) Admin
            1.	Admin can login and logout.
