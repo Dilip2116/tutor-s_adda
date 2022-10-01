@@ -13,6 +13,9 @@
 # Description
 On this global platform, multiple teachers can launch their online courses on any subject, and students can select the courses based on their preferences and reviews of teachers. This platform will help teachers to manage their individual schedules. At the end of each course, students can give reviews to the teacher regarding their performance to help other students while selecting courses.
 
+<hr>
+<hr>
+
 # feature
 
   ## Three roles are present on project
@@ -51,6 +54,38 @@ On this global platform, multiple teachers can launch their online courses on an
 
 <hr>
 <hr>
+<hr>
+<h2>How to Use..??</h2>
+<h3>Below steps will help you to run project locally in your PC :</h3>
+<ol>
+	<li>Clone project using link in git -https://github.com/Dilip2116/tutor-s_adda . <li>
+	<li>Open folder final_project.</li>
+	<li>From Database folder source the tutordb.sql file in MySQL database.</li>
+	<li>Use command "source filepath/tutordb.sql".</li>
+	<li>For backend open folder open springboot_jpa_final. </li>
+	<li>Import folder as project in spring boot.</li>
+	<li>In project, make changes in "src/main/resources/application.properties" for database connectivity change password with your mysql server password .</li>
+	<li>Run Project as java application.</li>
+	<li>Open frontend_react_final folder in Visual Studio Code.</li>
+	<li>Open Terminal and first fire command "npm install" so that all the dependency required for project will be include in folder id not run properly then install some more dependency....
+    <ol>
+    <li>npm install react-router-dom</li>
+    <li>npm install axios</li>
+    <li>npm install react-bootstrap bootstrap<li>
+    <li>npm install react-icons --save</li>
+    <li>npm install react-calendar</li>
+    <li>npm install react-hook-form</li>
+    <li>npm install validator</li>
+    </ol>
+    </li>
+    <li>Then Run server with command npm start.</li>
+	<li>You will be on home page of Tutor Adda.</li>
+	<li>Project ready to use.</li>
+</ol>
+
+<hr>
+<hr>
+
 <h2 align="center"> 💻 Technology Used </h2>
 
 <h3>1.Front End : HTML, CSS, JS(react), Bootstrap<h3> 
