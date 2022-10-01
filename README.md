@@ -18,9 +18,9 @@ On this global platform, multiple teachers can launch their online courses on an
 
 # feature
 
-  ## Three roles are present on project
+  <h5> Three roles are present on project </h5>
 
-### 1.) Admin
+###  Admin
 <ol>
            <li>Admin can login and logout.</li>
            <li> Admin can view, update profile.</li>
@@ -31,7 +31,7 @@ On this global platform, multiple teachers can launch their online courses on an
            <li> Admin can view reports.</li>
 </ol>
 
-### 2.) Student
+###  Student
 <ol>
            <li> Student can register.</li>
            <li> Student can login and logout.</li>
@@ -42,7 +42,8 @@ On this global platform, multiple teachers can launch their online courses on an
            <li> Student can check their all running courses.</li>
            <li> Student can give feedback for course and teacher.</li>
 </ol>
-### 3.) Teacher
+
+###   Teacher
 <ol>
            <li> Teacher can register.</li>
            <li> Teacher can login and logout.</li>
@@ -57,7 +58,7 @@ On this global platform, multiple teachers can launch their online courses on an
 
 <hr>
 <hr>
-<hr>
+
 <h2>Steps to run Project in your PC..</h2>
 <ol>
 	<li>Clone project using link in git -https://github.com/Dilip2116/tutor-s_adda . </li>
@@ -73,7 +74,7 @@ On this global platform, multiple teachers can launch their online courses on an
     <ol>
     <li>npm install react-router-dom</li>
     <li>npm install axios</li>
-    <li>npm install react-bootstrap bootstrap<li>
+    <li>npm install react-bootstrap bootstrap</li>
     <li>npm install react-icons --save</li>
     <li>npm install react-calendar</li>
     <li>npm install react-hook-form</li>
