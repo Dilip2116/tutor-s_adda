@@ -18,13 +18,13 @@ On this global platform, multiple teachers can launch their online courses on an
   ## Three roles are present on project
 
 ### 1.) Admin
-           1.	Admin can login and logout.
-           2.	Admin can view, update profile.
-           3.	Admin can change password.
-           4.	Admin can Update fee of courses.
-           5.	Admin can view all registered student information
-           6.	Admin can view all courses information which are launched on platform
-           7.	Admin can view reports
+           1. Admin can login and logout.
+           2. Admin can view, update profile.
+           3. Admin can change password.
+           4. Admin can Update fee of courses.
+           5. Admin can view all registered student information
+           6. Admin can view all courses information which are launched on platform
+           7. Admin can view reports
 
 ### 2.) Student
            1.	Student can register.
@@ -32,19 +32,19 @@ On this global platform, multiple teachers can launch their online courses on an
            3.	Student can view, update profile.
            4.	Student can change password.
            5.	Student can join multiple courses 
-           6. 	Student can check their upcoming course
-           7. 	Student can check their all running courses. 
-           8. 	Student can give feedback for course and teacher.
+           6. Student can check their upcoming course
+           7. Student can check their all running courses. 
+           8. Student can give feedback for course and teacher.
 
 ### 3.) Teacher
-           1.Teacher can register.
-           2.Teacher can login and logout.
-           3.Teacher can view, update profile.
-           4.Teacher can change password.
-           5.Teacher can launch multiple courses without having collision in time slot.
-           6.Teacher can view student data.
-           7.Teacher can view reports.
-           8.Teacher can view their upcoming class information
+           1. Teacher can register.
+           2. Teacher can login and logout.
+           3. Teacher can view, update profile.
+           4. Teacher can change password.
+           5. Teacher can launch multiple courses without having collision in time slot.
+           6. Teacher can view student data.
+           7. Teacher can view reports.
+           8. Teacher can view their upcoming class information
 
 
 
