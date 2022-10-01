@@ -53,9 +53,10 @@ On this global platform, multiple teachers can launch their online courses on an
 <hr>
 <h2 align="center"> 💻 Technology Used </h2>
 <p align="center">
-1.	Front End : HTML, CSS, JS(react), Bootstrap, 
-2.	Middle  Layer  :  Java(spring boot),  
-3.	Back End : database(MYSQL),
+
+# 1.Front End : HTML, CSS, JS(react), Bootstrap, 
+# 2.Middle  Layer  :  Java(spring boot),  
+# 3.Back End : database(MYSQL),
 
  
 <img height="40" src="https://github.com/devicons/devicon/blob/master/icons/java/java-plain.svg">
