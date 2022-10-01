@@ -27,6 +27,7 @@ On this global platform, multiple teachers can launch their online courses on an
            7. Admin can view reports
 
 ### 2.) Student
+
            1. Student can register.
            2. Student can login and logout.
            3. Student can view, update profile.
