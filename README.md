@@ -66,12 +66,12 @@ On this global platform, multiple teachers can launch their online courses on an
 	<li>Open folder final_project.</li>
 	<li>From Database folder source the tutordb.sql file in MySQL database.</li>
 	<li>Use command "source filepath/tutordb.sql".</li>
-	<li>For backend open folder open springboot_jpa_final. </li>
+	<li>For backend open folder  springboot_jpa_final. </li>
 	<li>Import folder as project in spring boot.</li>
 	<li>In project, make changes in "src/main/resources/application.properties" for database connectivity change password with your mysql server password .</li>
 	<li>Run Project as java application.</li>
 	<li>Open frontend_react_final folder in Visual Studio Code.</li>
-	<li>Open Terminal and first fire command "npm install" so that all the dependency required for project will be include in folder id not run properly then install some more dependency....
+	<li>Open Terminal and first fire command "npm install" so that all the dependency required for project will be include in folder if not run properly then install some more dependency....
     <ol>
     <li>npm install react-router-dom</li>
     <li>npm install axios</li>
