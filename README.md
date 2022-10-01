@@ -13,6 +13,12 @@
 # Description
 On this global platform, multiple teachers can launch their online courses on any subject, and students can select the courses based on their preferences and reviews of teachers. This platform will help teachers to manage their individual schedules. At the end of each course, students can give reviews to the teacher regarding their performance to help other students while selecting courses.
 
+#feature
+## Three role are present on project
+### 1.) Admin
+### 2.) Student
+### 3.) Teacher
+
 
 <hr>
 <hr>
