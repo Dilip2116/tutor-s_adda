@@ -1,4 +1,4 @@
-<h1 align="center"> Tutor's Adda </h1>
+<h1 align="center"> Title:-   Tutor Adda </h1>
 <p align="center">
 <img height="300" width="300"  src="https://github.com/Dilip2116/tutor-s_adda/blob/main/ui-pages/tutor_logo.png">
 </p>
