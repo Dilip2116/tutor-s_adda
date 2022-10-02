@@ -18,7 +18,7 @@ On this global platform, multiple teachers can launch their online courses on an
 
 # feature
 
-  <h3> Three roles are present on project </h3>
+  <h3> Three roles are present in project </h3>
   -----------------------------------------------------
 
 ###  Admin
@@ -109,6 +109,7 @@ On this global platform, multiple teachers can launch their online courses on an
 <img height="40" src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-plain.svg">
 <img height="40" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg">
 <img height="40" src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-plain.svg">
+ <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" height="40"/> 
 </p>
  <hr/>
  <hr>
